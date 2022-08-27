@@ -24,7 +24,7 @@ LEXICAL_SRC  := $(filter-out $(SRC_DIR)/main.c,$(SRC))
 
 .PHONY: all build format clean flex info
 
-all: flex build $(APP_DIR)/$(COMPILER)
+all: format flex build $(APP_DIR)/$(COMPILER)
 
 build:
 	@mkdir -p $(BUILD)
