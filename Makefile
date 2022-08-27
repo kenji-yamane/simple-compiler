@@ -6,7 +6,7 @@ OBJ_DIR := $(BUILD)/objects
 APP_DIR := $(BUILD)
 FLX_SRC := lex.yy.c
 
-SRC := $(shell ls $(SRC_DIR)/*.c)
+SRC := $(SRC_DIR)/util.c $(SRC_DIR)/lex.yy.c $(SRC_DIR)/main.c
 FLX := $(shell ls $(SRC_DIR)/*.l)
 OBJ := $(SRC:%.c=$(OBJ_DIR)/%.o)
 DEP := $(OBJ:.o=.d)
@@ -21,10 +21,15 @@ $(OBJ_DIR)/%.o:%.c
 
 LEXICAL_TEST := lexical-test
 LEXICAL_SRC  := $(filter-out $(SRC_DIR)/main.c,$(SRC))
+LEXICAL_SRC  += lexical_test.c
+LEXICAL_OBJ  := $(LEXICAL_SRC:%.c=$(OBJ_DIR)/%.o)
+$(APP_DIR)/$(LEXICAL_TEST): $(LEXICAL_OBJ)
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -o $@ $^
 
 .PHONY: all build format clean flex info
 
-all: format flex build $(APP_DIR)/$(COMPILER)
+all: format flex build $(APP_DIR)/$(COMPILER) $(APP_DIR)/$(LEXICAL_TEST)
 
 build:
 	@mkdir -p $(BUILD)
@@ -32,8 +37,9 @@ build:
 
 NON_AUTOMATIC_SRC := $(filter-out $(SRC_DIR)/$(FLX_SRC),$(SRC))
 NON_AUTOMATIC_SRC += lexical_test.c
+HEADERS           := $(shell ls $(SRC_DIR)/*.h)
 format:
-	clang-format -style=file -i $(NON_AUTOMATIC_SRC)
+	clang-format -style=file -i $(NON_AUTOMATIC_SRC) $(HEADERS)
 
 clean:
 	-@rm -rvf $(OBJ_DIR)/*

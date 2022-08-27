@@ -12,3 +12,10 @@ To install it on Ubuntu:
 sudo apt-get install flex
 ```
 
+## Execution
+
+To generate the compiler, run:
+```bash
+make all
+```
+

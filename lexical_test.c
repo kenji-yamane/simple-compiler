@@ -1,22 +1,15 @@
 #include "src/globals.h"
 
-#include "scan.h"
-#include "util.h"
+#include "src/scan.h"
+#include "src/util.h"
 
 /* allocate global variables */
 int lineno = 0;
 FILE *source;
 FILE *listing;
-FILE *code;
 
 /* allocate and set tracing flags */
-int EchoSource = TRUE;
 int TraceScan = TRUE;
-int TraceParse = FALSE;
-int TraceAnalyze = FALSE;
-int TraceCode = FALSE;
-
-int Error = FALSE;
 
 int main(int argc, char *argv[]) {
     char pgm[120]; /* source code file name */
