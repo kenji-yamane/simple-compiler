@@ -19,15 +19,15 @@
 
 #include "util.h"
 #if NO_PARSE
-#include "scan.h"
+    #include "scan.h"
 #else
-#include "parse.h"
-#if !NO_ANALYZE
-#include "analyze.h"
-#if !NO_CODE
-#include "cgen.h"
-#endif
-#endif
+    #include "parse.h"
+    #if !NO_ANALYZE
+        #include "analyze.h"
+        #if !NO_CODE
+            #include "cgen.h"
+        #endif
+    #endif
 #endif
 
 /* allocate global variables */
@@ -71,7 +71,7 @@ int main(int argc, char *argv[]) {
         fprintf(listing, "\nSyntax tree:\n");
         printTree(syntaxTree);
     }
-#if !NO_ANALYZE
+    #if !NO_ANALYZE
     if (!Error) {
         if (TraceAnalyze)
             fprintf(listing, "\nBuilding Symbol Table...\n");
@@ -82,7 +82,7 @@ int main(int argc, char *argv[]) {
         if (TraceAnalyze)
             fprintf(listing, "\nType Checking Finished\n");
     }
-#if !NO_CODE
+        #if !NO_CODE
     if (!Error) {
         char *codefile;
         int fnlen = strcspn(pgm, ".");
@@ -97,8 +97,8 @@ int main(int argc, char *argv[]) {
         codeGen(syntaxTree, codefile);
         fclose(code);
     }
-#endif
-#endif
+        #endif
+    #endif
 #endif
     fclose(source);
     return 0;
