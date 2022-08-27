@@ -6,7 +6,7 @@ OBJ_DIR := $(BUILD)/objects
 APP_DIR := $(BUILD)
 FLX_SRC := lex.yy.c
 
-SRC := $(SRC_DIR)/util.c $(SRC_DIR)/lex.yy.c $(SRC_DIR)/main.c
+SRC := $(shell ls $(SRC_DIR)/*.c)
 FLX := $(shell ls $(SRC_DIR)/*.l)
 OBJ := $(SRC:%.c=$(OBJ_DIR)/%.o)
 DEP := $(OBJ:.o=.d)
