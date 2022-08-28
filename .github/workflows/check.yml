@@ -11,6 +11,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
+      - name: Assess
+        run: ldconfig -p | grep libfl
+
       - name: Build
         run: |
          sudo apt-get update
