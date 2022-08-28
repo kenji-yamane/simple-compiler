@@ -1,7 +1,7 @@
-#include "src/globals.h"
+#include "../../src/globals.h"
 
-#include "src/scan.h"
-#include "src/util.h"
+#include "../../src/scan.h"
+#include "../../src/util.h"
 
 /* allocate global variables */
 int lineno = 0;
@@ -12,7 +12,7 @@ FILE *listing;
 int TraceScan = TRUE;
 
 int main(int argc, char *argv[]) {
-    source = fopen("fixtures/gcd.cm", "r");
+    source = fopen("test/fixtures/gcd.cm", "r");
     if (source == NULL) {
         fprintf(stderr, "fixture gcd not found");
     }

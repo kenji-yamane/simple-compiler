@@ -30,7 +30,7 @@ $(OBJ_DIR)/%.o:%.c
 
 LEXICAL_TEST := lexical-test
 LEXICAL_SRC  := $(filter-out $(SRC_DIR)/main.c,$(SRC))
-LEXICAL_SRC  += lexical_test.c
+LEXICAL_SRC  += $(LEXICAL_TEST_DIR)/main.c
 LEXICAL_OBJ  := $(LEXICAL_SRC:%.c=$(OBJ_DIR)/%.o)
 $(APP_DIR)/$(LEXICAL_TEST): $(LEXICAL_OBJ)
 	@mkdir -p $(@D)
@@ -45,7 +45,7 @@ build:
 	@mkdir -p $(OBJ_DIR)
 
 NON_AUTOMATIC_SRC := $(filter-out $(SRC_DIR)/$(FLX_SRC),$(SRC))
-NON_AUTOMATIC_SRC += lexical_test.c
+NON_AUTOMATIC_SRC += $(LEXICAL_TEST_DIR)/main.c
 HEADERS           := $(shell ls $(SRC_DIR)/*.h)
 format:
 	clang-format -style=file -i $(NON_AUTOMATIC_SRC) $(HEADERS)
