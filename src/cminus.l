@@ -41,7 +41,12 @@ whitespace  [ \t]+
 "}"             {return RBRACE;}
 {number}        {return NUM;}
 {identifier}    {return ID;}
-{newline}       {lineno++;}
+{newline}       {
+					lineno++;
+					if (TraceScan) {
+			            fprintf(listing, "line %d:\n", lineno);
+			        }
+				}
 {whitespace}    {/* skip whitespace */}
 "/*"            {
 					char c = 'a', last;
@@ -62,13 +67,15 @@ TokenType getToken(void) {
     if (firstTime) {
         firstTime = FALSE;
         lineno++;
+		if (TraceScan) {
+            fprintf(listing, "line %d:\n", lineno);
+		}
         yyin = source;
         yyout = listing;
     }
     currentToken = yylex();
     strncpy(tokenString, yytext, MAXTOKENLEN);
     if (TraceScan) {
-        fprintf(listing, "\t%d: ", lineno);
         printToken(currentToken, tokenString);
     }
     return currentToken;

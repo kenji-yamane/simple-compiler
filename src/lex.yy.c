@@ -913,16 +913,21 @@ case 30:
 /* rule 30 can match eol */
 YY_RULE_SETUP
 #line 44 "src/cminus.l"
-{lineno++;}
+{
+					lineno++;
+					if (TraceScan) {
+			            fprintf(listing, "line %d:\n", lineno);
+			        }
+				}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 45 "src/cminus.l"
+#line 50 "src/cminus.l"
 {/* skip whitespace */}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 46 "src/cminus.l"
+#line 51 "src/cminus.l"
 {
 					char c = 'a', last;
 					do {
@@ -937,15 +942,15 @@ YY_RULE_SETUP
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 57 "src/cminus.l"
+#line 62 "src/cminus.l"
 {return ERROR;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 58 "src/cminus.l"
+#line 63 "src/cminus.l"
 ECHO;
 	YY_BREAK
-#line 949 "src/lex.yy.c"
+#line 954 "src/lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1950,7 +1955,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 58 "src/cminus.l"
+#line 63 "src/cminus.l"
 
 TokenType getToken(void) {
     static int firstTime = TRUE;
@@ -1958,13 +1963,15 @@ TokenType getToken(void) {
     if (firstTime) {
         firstTime = FALSE;
         lineno++;
+		if (TraceScan) {
+            fprintf(listing, "line %d:\n", lineno);
+		}
         yyin = source;
         yyout = listing;
     }
     currentToken = yylex();
     strncpy(tokenString, yytext, MAXTOKENLEN);
     if (TraceScan) {
-        fprintf(listing, "\t%d: ", lineno);
         printToken(currentToken, tokenString);
     }
     return currentToken;

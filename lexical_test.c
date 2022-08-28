@@ -12,21 +12,12 @@ FILE *listing;
 int TraceScan = TRUE;
 
 int main(int argc, char *argv[]) {
-    char pgm[120]; /* source code file name */
-    if (argc != 2) {
-        fprintf(stderr, "usage: %s <filename>\n", argv[0]);
-        exit(1);
-    }
-    strcpy(pgm, argv[1]);
-    if (strchr(pgm, '.') == NULL)
-        strcat(pgm, ".tny");
-    source = fopen(pgm, "r");
+    source = fopen("fixtures/gcd.cm", "r");
     if (source == NULL) {
-        fprintf(stderr, "File %s not found\n", pgm);
-        exit(1);
+        fprintf(stderr, "fixture gcd not found");
     }
     listing = stdout; /* send listing to screen */
-    fprintf(listing, "\nC- COMPILATION: %s\n", pgm);
+    fprintf(listing, "# C- COMPILATION: %s\n", "gcd.cm");
     while (getToken() != ENDFILE)
         ;
     fclose(source);
