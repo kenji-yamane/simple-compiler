@@ -17,33 +17,34 @@
 /* MAXRESERVED = the number of reserved words */
 #define MAXRESERVED 8
 
-typedef enum
-/* book-keeping tokens */
-{ ENDFILE,
-  ERROR,
-  /* reserved words */
-  IF,
-  ELSE,
-  WHILE,
-  INPUT,
-  OUTPUT,
-  INT,
-  RETURN,
-  VOID,
-  /* multicharacter tokens */
-  ID,
-  NUM,
-  /* special symbols */
-  ASSIGN,
-  EQ,
-  LT,
-  PLUS,
-  MINUS,
-  TIMES,
-  OVER,
-  LPAREN,
-  RPAREN,
-  SEMI } TokenType;
+typedef enum {
+    /* book-keeping tokens */
+    ENDFILE,
+    ERROR,
+    /* reserved words */
+    IF,
+    ELSE,
+    WHILE,
+    INPUT,
+    OUTPUT,
+    INT,
+    RETURN,
+    VOID,
+    /* multicharacter tokens */
+    ID,
+    NUM,
+    /* special symbols */
+    ASSIGN,
+    EQ,
+    LT,
+    PLUS,
+    MINUS,
+    TIMES,
+    OVER,
+    LPAREN,
+    RPAREN,
+    SEMI
+} TokenType;
 
 extern FILE *source;  /* source code text file */
 extern FILE *listing; /* listing output text file */
