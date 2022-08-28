@@ -44,28 +44,32 @@ whitespace  [ \t]+
 {newline}       {lineno++;}
 {whitespace}    {/* skip whitespace */}
 "/*"            {
-					char c;
-                  	do { c = input();
-                    	if (c == EOF) break;
-                    if (c == '\n') lineno++;
-                  } while (c != '}');
+					char c = 'a', last;
+					do {
+						last = c;
+					    c = input();
+					    if (c == EOF)
+					        break;
+					    if (c == '\n')
+					        lineno++;
+					} while (!(last == '*' && c == '/'));
                 }
 .               {return ERROR;}
 %%
-TokenType getToken(void)
-{ static int firstTime = TRUE;
-  TokenType currentToken;
-  if (firstTime)
-  { firstTime = FALSE;
-    lineno++;
-    yyin = source;
-    yyout = listing;
-  }
-  currentToken = yylex();
-  strncpy(tokenString,yytext,MAXTOKENLEN);
-  if (TraceScan) {
-    fprintf(listing,"\t%d: ",lineno);
-    printToken(currentToken,tokenString);
-  }
-  return currentToken;
+TokenType getToken(void) {
+    static int firstTime = TRUE;
+    TokenType currentToken;
+    if (firstTime) {
+        firstTime = FALSE;
+        lineno++;
+        yyin = source;
+        yyout = listing;
+    }
+    currentToken = yylex();
+    strncpy(tokenString, yytext, MAXTOKENLEN);
+    if (TraceScan) {
+        fprintf(listing, "\t%d: ", lineno);
+        printToken(currentToken, tokenString);
+    }
+    return currentToken;
 }
