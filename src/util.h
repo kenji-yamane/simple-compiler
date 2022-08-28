@@ -8,6 +8,11 @@
  */
 void printToken(TokenType, const char *);
 
+/* Simply prints the corresponding string
+ * to the enum variable
+ */
+void tokenTypeToString(TokenType);
+
 /* Function newStmtNode creates a new statement
  * node for syntax tree construction
  */
