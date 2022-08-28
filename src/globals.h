@@ -50,7 +50,8 @@ typedef enum {
     LPAREN,
     RPAREN,
     LBRACK,
-    RBRACK LBRACE,
+    RBRACK,
+    LBRACE,
     RBRACE
 } TokenType;
 
