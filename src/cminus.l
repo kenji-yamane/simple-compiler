@@ -20,24 +20,33 @@ whitespace  [ \t]+
 "int"           {return INT;}
 "return"        {return RETURN;}
 "void"          {return VOID;}
-":="            {return ASSIGN;}
-"="             {return EQ;}
-"<"             {return LT;}
 "+"             {return PLUS;}
 "-"             {return MINUS;}
 "*"             {return TIMES;}
 "/"             {return OVER;}
+"<"             {return LT;}
+"<="            {return LTEQ;}
+">"             {return GT;}
+">="            {return GTEQ;}
+"=="            {return EQ;}
+"!="            {return NEQ;}
+"="             {return ASSIGN;}
+";"             {return SEMI;}
+","             {return COMMA;}
 "("             {return LPAREN;}
 ")"             {return RPAREN;}
-";"             {return SEMI;}
+"["             {return LBRACK;}
+"]"             {return RBRACK;}
+"{"             {return LBRACE;}
+"}"             {return RBRACE;}
 {number}        {return NUM;}
 {identifier}    {return ID;}
 {newline}       {lineno++;}
 {whitespace}    {/* skip whitespace */}
-"{"             { char c;
-                  do
-                  { c = input();
-                    if (c == EOF) break;
+"/*"            {
+					char c;
+                  	do { c = input();
+                    	if (c == EOF) break;
                     if (c == '\n') lineno++;
                   } while (c != '}');
                 }

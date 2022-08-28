@@ -24,24 +24,6 @@ void printToken(TokenType token, const char *tokenString) {
     case VOID:
         fprintf(listing, "reserved word: %s\n", tokenString);
         break;
-    case ASSIGN:
-        fprintf(listing, ":=\n");
-        break;
-    case LT:
-        fprintf(listing, "<\n");
-        break;
-    case EQ:
-        fprintf(listing, "=\n");
-        break;
-    case LPAREN:
-        fprintf(listing, "(\n");
-        break;
-    case RPAREN:
-        fprintf(listing, ")\n");
-        break;
-    case SEMI:
-        fprintf(listing, ";\n");
-        break;
     case PLUS:
         fprintf(listing, "+\n");
         break;
@@ -53,6 +35,45 @@ void printToken(TokenType token, const char *tokenString) {
         break;
     case OVER:
         fprintf(listing, "/\n");
+        break;
+    case LT:
+        fprintf(listing, "<\n");
+        break;
+	case LTEQ:
+		fprintf(listing, "<=\n");
+		break;
+	case GT:
+		fprintf(listing, ">\n");
+		break;
+	case GTEQ:
+		fprintf(listing, ">=\n");
+		break;
+    case EQ:
+        fprintf(listing, "==\n");
+        break;
+    case NEQ:
+        fprintf(listing, "!=\n");
+        break;
+	case ASSIGN:
+		fprintf(listing, "=\n");
+		break;
+    case SEMI:
+        fprintf(listing, ";\n");
+        break;
+    case COMMA:
+        fprintf(listing, ",\n");
+        break;
+    case LPAREN:
+        fprintf(listing, "(\n");
+        break;
+    case RPAREN:
+        fprintf(listing, ")\n");
+        break;
+    case LBRACK:
+        fprintf(listing, "[\n");
+        break;
+    case RBRACK:
+        fprintf(listing, "]\n");
         break;
     case ENDFILE:
         fprintf(listing, "EOF\n");

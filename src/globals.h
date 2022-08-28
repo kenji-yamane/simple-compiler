@@ -34,16 +34,25 @@ typedef enum {
     ID,
     NUM,
     /* special symbols */
-    ASSIGN,
-    EQ,
-    LT,
     PLUS,
     MINUS,
     TIMES,
     OVER,
+    LT,
+	LTEQ,
+	GT,
+	GTEQ,
+    EQ,
+	NEQ,
+	ASSIGN,
+    SEMI,
+	COMMA,
     LPAREN,
     RPAREN,
-    SEMI
+	LBRACK,
+	RBRACK
+	LBRACE,
+	RBRACE
 } TokenType;
 
 extern FILE *source;  /* source code text file */
