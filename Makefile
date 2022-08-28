@@ -1,5 +1,11 @@
 CC      := gcc
-CFLAGS  := -lfl
+
+CFLAGS := -lfl
+OS     := $(shell uname -s)
+ifeq ($(OS),Darwin)
+	CFLAGS := -ll
+endif
+
 SRC_DIR := src
 BUILD   := ./build
 OBJ_DIR := $(BUILD)/objects
