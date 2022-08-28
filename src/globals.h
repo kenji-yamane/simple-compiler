@@ -1,11 +1,3 @@
-/****************************************************/
-/* File: globals.h                                  */
-/* Global types and vars for TINY compiler          */
-/* must come before other include files             */
-/* Compiler Construction: Principles and Practice   */
-/* Kenneth C. Louden                                */
-/****************************************************/
-
 #ifndef _GLOBALS_H_
 #define _GLOBALS_H_
 
@@ -31,13 +23,13 @@ typedef enum
   ERROR,
   /* reserved words */
   IF,
-  THEN,
   ELSE,
-  END,
-  REPEAT,
-  UNTIL,
-  READ,
-  WRITE,
+  WHILE,
+  INPUT,
+  OUTPUT,
+  INT,
+  RETURN,
+  VOID,
   /* multicharacter tokens */
   ID,
   NUM,

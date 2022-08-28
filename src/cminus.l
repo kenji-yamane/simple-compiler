@@ -1,10 +1,3 @@
-/****************************************************/
-/* File: tiny.l                                     */
-/* Lex specification for TINY                       */
-/* Compiler Construction: Principles and Practice   */
-/* Kenneth C. Louden                                */
-/****************************************************/
-
 %{
 #include "globals.h"
 #include "util.h"
@@ -20,13 +13,13 @@ newline     \n
 whitespace  [ \t]+
 %%
 "if"            {return IF;}
-"then"          {return THEN;}
 "else"          {return ELSE;}
-"end"           {return END;}
-"repeat"        {return REPEAT;}
-"until"         {return UNTIL;}
-"read"          {return READ;}
-"write"         {return WRITE;}
+"while"         {return WHILE;}
+"input"         {return INPUT;}
+"output"        {return OUTPUT;}
+"int"           {return INT;}
+"return"        {return RETURN;}
+"void"          {return VOID;}
 ":="            {return ASSIGN;}
 "="             {return EQ;}
 "<"             {return LT;}
