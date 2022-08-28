@@ -5,7 +5,7 @@ OS     := $(shell uname -s)
 ARCH   := $(shell uname -m)
 ifeq ($(OS),Linux)
 	ifeq ($(ARCH),x86_64)
-		CFLAGS := -lfl
+		CFLAGS := -ll
 	endif
 endif
 
