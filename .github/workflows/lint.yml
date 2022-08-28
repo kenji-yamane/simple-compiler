@@ -1,9 +1,12 @@
 name: GitHub Actions Demo
+
 on: [push]
+
 jobs:
   lint:
     runs-on: ubuntu-latest
     name: lint commit
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -21,4 +24,3 @@ jobs:
           author_email: linter@mail.com
           message: 'lint source'
           add: '--all'
-
