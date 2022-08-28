@@ -12,8 +12,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build
-        run: sudo apt-get install -y flex build-essential
-        run: make flex build/lexical-test
+        run: |
+         sudo apt-get install -y flex build-essential
+         make flex build/lexical-test
 
       - name: Test
         run: make check-lexical
