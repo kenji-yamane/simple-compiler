@@ -13,6 +13,7 @@ jobs:
 
       - name: Build
         run: |
+         sudo apt-get update
          sudo apt-get install --reinstall -y flex
          make flex build/lexical-test
 
