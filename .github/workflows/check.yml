@@ -14,12 +14,13 @@ jobs:
       - name: Assess
         run: ldconfig -p | grep libfl
 
-      - name: Build
+      - name: Install dependencies
         run: |
          sudo apt-get update
          sudo apt-get install -y libfl-dev
-         ldconfig -p | grep libfl
-         make flex build/lexical-test
+
+      - name: Build
+        run: make flex build/lexical-test
 
       - name: Test
         run: make check-lexical
