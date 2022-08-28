@@ -1,9 +1,12 @@
 CC      := gcc
 
-CFLAGS := -lfl
+CFLAGS := -ll
 OS     := $(shell uname -s)
-ifeq ($(OS),Darwin)
-	CFLAGS := -ll
+ARCH   := $(shell uname -m)
+ifeq ($(OS),Linux)
+	ifeq ($(ARCH),x86_64)
+		CFLAGS := -lfl
+	endif
 endif
 
 SRC_DIR := src
