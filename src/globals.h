@@ -39,20 +39,19 @@ typedef enum {
     TIMES,
     OVER,
     LT,
-	LTEQ,
-	GT,
-	GTEQ,
+    LTEQ,
+    GT,
+    GTEQ,
     EQ,
-	NEQ,
-	ASSIGN,
+    NEQ,
+    ASSIGN,
     SEMI,
-	COMMA,
+    COMMA,
     LPAREN,
     RPAREN,
-	LBRACK,
-	RBRACK
-	LBRACE,
-	RBRACE
+    LBRACK,
+    RBRACK LBRACE,
+    RBRACE
 } TokenType;
 
 extern FILE *source;  /* source code text file */

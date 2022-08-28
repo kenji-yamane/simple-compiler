@@ -39,24 +39,24 @@ void printToken(TokenType token, const char *tokenString) {
     case LT:
         fprintf(listing, "<\n");
         break;
-	case LTEQ:
-		fprintf(listing, "<=\n");
-		break;
-	case GT:
-		fprintf(listing, ">\n");
-		break;
-	case GTEQ:
-		fprintf(listing, ">=\n");
-		break;
+    case LTEQ:
+        fprintf(listing, "<=\n");
+        break;
+    case GT:
+        fprintf(listing, ">\n");
+        break;
+    case GTEQ:
+        fprintf(listing, ">=\n");
+        break;
     case EQ:
         fprintf(listing, "==\n");
         break;
     case NEQ:
         fprintf(listing, "!=\n");
         break;
-	case ASSIGN:
-		fprintf(listing, "=\n");
-		break;
+    case ASSIGN:
+        fprintf(listing, "=\n");
+        break;
     case SEMI:
         fprintf(listing, ";\n");
         break;
