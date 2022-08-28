@@ -12,6 +12,9 @@ OBJ_DIR := $(BUILD)/objects
 APP_DIR := $(BUILD)
 FLX_SRC := lex.yy.c
 
+TEST_DIR         := ./test
+LEXICAL_TEST_DIR := $(TEST_DIR)/lexical
+
 SRC := $(shell ls $(SRC_DIR)/*.c)
 FLX := $(shell ls $(SRC_DIR)/*.l)
 OBJ := $(SRC:%.c=$(OBJ_DIR)/%.o)
@@ -33,7 +36,7 @@ $(APP_DIR)/$(LEXICAL_TEST): $(LEXICAL_OBJ)
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -o $@ $^
 
-.PHONY: all build format clean flex info
+.PHONY: all build format check-lexical clean flex info
 
 all: format flex build $(APP_DIR)/$(COMPILER) $(APP_DIR)/$(LEXICAL_TEST)
 
@@ -46,6 +49,10 @@ NON_AUTOMATIC_SRC += lexical_test.c
 HEADERS           := $(shell ls $(SRC_DIR)/*.h)
 format:
 	clang-format -style=file -i $(NON_AUTOMATIC_SRC) $(HEADERS)
+
+check-lexical: $(APP_DIR)/$(LEXICAL_TEST)
+	@$(BUILD)/$(LEXICAL_TEST)
+	@cmp $(LEXICAL_TEST_DIR)/expected-gcd-tokens.yml $(LEXICAL_TEST_DIR)/resulting-gcd-tokens.yml
 
 clean:
 	-@rm -rvf $(OBJ_DIR)/*

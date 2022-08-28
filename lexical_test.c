@@ -16,10 +16,11 @@ int main(int argc, char *argv[]) {
     if (source == NULL) {
         fprintf(stderr, "fixture gcd not found");
     }
-    listing = stdout; /* send listing to screen */
+    listing = fopen("test/lexical/resulting-gcd-tokens.yml", "w"); /* send listing to screen */
     fprintf(listing, "# C- COMPILATION: %s\n", "gcd.cm");
     while (getToken() != ENDFILE)
         ;
     fclose(source);
+	fclose(listing);
     return 0;
 }

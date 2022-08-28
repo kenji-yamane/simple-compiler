@@ -54,5 +54,11 @@ dkms.conf
 # Vim aux files
 *.swp
 
+# Flex output
+*.yy.c
+
+# Lexical test outputs
+resulting*tokens.yml
+
 # Build directory
 build

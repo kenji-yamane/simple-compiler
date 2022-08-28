@@ -1,0 +1,231 @@
+# C- COMPILATION: gcd.cm
+line 1:
+line 3:
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "gcd"
+		type:   ID
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "u"
+		type:   ID
+	special symbol:
+		lexeme: ","
+		type:   COMMA
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "v"
+		type:   ID
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: "{"
+		type:   LBRACE
+line 4:
+	reserved word:
+		lexeme: "if"
+		type:   IF
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	identifier:
+		lexeme: "v"
+		type:   ID
+	special symbol:
+		lexeme: "=="
+		type:   EQ
+	number:
+		lexeme: "0"
+		type:   NUM
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+line 5:
+	reserved word:
+		lexeme: "return"
+		type:   RETURN
+	identifier:
+		lexeme: "u"
+		type:   ID
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 6:
+	reserved word:
+		lexeme: "else"
+		type:   ELSE
+line 7:
+	reserved word:
+		lexeme: "return"
+		type:   RETURN
+	identifier:
+		lexeme: "gcd"
+		type:   ID
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	identifier:
+		lexeme: "v"
+		type:   ID
+	special symbol:
+		lexeme: ","
+		type:   COMMA
+	identifier:
+		lexeme: "u"
+		type:   ID
+	special symbol:
+		lexeme: "-"
+		type:   MINUS
+	identifier:
+		lexeme: "u"
+		type:   ID
+	special symbol:
+		lexeme: "/"
+		type:   OVER
+	identifier:
+		lexeme: "v"
+		type:   ID
+	special symbol:
+		lexeme: "*"
+		type:   TIMES
+	identifier:
+		lexeme: "v"
+		type:   ID
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 8:
+line 9:
+	special symbol:
+		lexeme: "}"
+		type:   RBRACE
+line 10:
+line 11:
+	reserved word:
+		lexeme: "void"
+		type:   VOID
+	identifier:
+		lexeme: "main"
+		type:   ID
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	reserved word:
+		lexeme: "void"
+		type:   VOID
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: "{"
+		type:   LBRACE
+line 12:
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "x"
+		type:   ID
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 13:
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "y"
+		type:   ID
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 14:
+	identifier:
+		lexeme: "x"
+		type:   ID
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	reserved word:
+		lexeme: "input"
+		type:   INPUT
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 15:
+	identifier:
+		lexeme: "y"
+		type:   ID
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	reserved word:
+		lexeme: "input"
+		type:   INPUT
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 16:
+	reserved word:
+		lexeme: "output"
+		type:   OUTPUT
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	identifier:
+		lexeme: "gcd"
+		type:   ID
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	identifier:
+		lexeme: "x"
+		type:   ID
+	special symbol:
+		lexeme: ","
+		type:   COMMA
+	identifier:
+		lexeme: "y"
+		type:   ID
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 17:
+	special symbol:
+		lexeme: "}"
+		type:   RBRACE
+line 18:
+	trace:
+		lexeme: ""
+		type:   ENDFILE
