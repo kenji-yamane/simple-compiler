@@ -17,7 +17,8 @@ jobs:
       - name: Build
         run: |
          sudo apt-get update
-         sudo apt-get install --reinstall -y flex
+		 sudo apt-get install -y libfl-dev
+		 ldconfig -p | grep libfl
          make flex build/lexical-test
 
       - name: Test
