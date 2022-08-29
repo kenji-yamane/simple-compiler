@@ -1,0 +1,772 @@
+# C- COMPILATION: gcd.cm
+line 1:
+line 3:
+line 4:
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "x"
+		type:   ID
+	special symbol:
+		lexeme: "["
+		type:   LBRACK
+	number:
+		lexeme: "10"
+		type:   NUM
+	special symbol:
+		lexeme: "]"
+		type:   RBRACK
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 5:
+line 6:
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "minloc"
+		type:   ID
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "a"
+		type:   ID
+	special symbol:
+		lexeme: "["
+		type:   LBRACK
+	special symbol:
+		lexeme: "]"
+		type:   RBRACK
+	special symbol:
+		lexeme: ","
+		type:   COMMA
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "low"
+		type:   ID
+	special symbol:
+		lexeme: ","
+		type:   COMMA
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "high"
+		type:   ID
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: "{"
+		type:   LBRACE
+line 7:
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 8:
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "x"
+		type:   ID
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 9:
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "k"
+		type:   ID
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 10:
+	identifier:
+		lexeme: "k"
+		type:   ID
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	identifier:
+		lexeme: "low"
+		type:   ID
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 11:
+	identifier:
+		lexeme: "x"
+		type:   ID
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	identifier:
+		lexeme: "a"
+		type:   ID
+	special symbol:
+		lexeme: "["
+		type:   LBRACK
+	identifier:
+		lexeme: "low"
+		type:   ID
+	special symbol:
+		lexeme: "]"
+		type:   RBRACK
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 12:
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	identifier:
+		lexeme: "low"
+		type:   ID
+	special symbol:
+		lexeme: "+"
+		type:   PLUS
+	number:
+		lexeme: "1"
+		type:   NUM
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 13:
+	reserved word:
+		lexeme: "while"
+		type:   WHILE
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "<"
+		type:   LT
+	identifier:
+		lexeme: "high"
+		type:   ID
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: "{"
+		type:   LBRACE
+line 14:
+	reserved word:
+		lexeme: "if"
+		type:   IF
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	identifier:
+		lexeme: "a"
+		type:   ID
+	special symbol:
+		lexeme: "["
+		type:   LBRACK
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "]"
+		type:   RBRACK
+	special symbol:
+		lexeme: "<"
+		type:   LT
+	identifier:
+		lexeme: "x"
+		type:   ID
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: "{"
+		type:   LBRACE
+line 15:
+	identifier:
+		lexeme: "x"
+		type:   ID
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	identifier:
+		lexeme: "a"
+		type:   ID
+	special symbol:
+		lexeme: "["
+		type:   LBRACK
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "]"
+		type:   RBRACK
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 16:
+	identifier:
+		lexeme: "k"
+		type:   ID
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 17:
+	special symbol:
+		lexeme: "}"
+		type:   RBRACE
+line 18:
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "+"
+		type:   PLUS
+	number:
+		lexeme: "1"
+		type:   NUM
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 19:
+	special symbol:
+		lexeme: "}"
+		type:   RBRACE
+line 20:
+	reserved word:
+		lexeme: "return"
+		type:   RETURN
+	identifier:
+		lexeme: "k"
+		type:   ID
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 21:
+	special symbol:
+		lexeme: "}"
+		type:   RBRACE
+line 22:
+line 23:
+	reserved word:
+		lexeme: "void"
+		type:   VOID
+	identifier:
+		lexeme: "sort"
+		type:   ID
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "a"
+		type:   ID
+	special symbol:
+		lexeme: "["
+		type:   LBRACK
+	special symbol:
+		lexeme: "]"
+		type:   RBRACK
+	special symbol:
+		lexeme: ","
+		type:   COMMA
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "low"
+		type:   ID
+	special symbol:
+		lexeme: ","
+		type:   COMMA
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "high"
+		type:   ID
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: "{"
+		type:   LBRACE
+line 24:
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 25:
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "k"
+		type:   ID
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 26:
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	identifier:
+		lexeme: "low"
+		type:   ID
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 27:
+	reserved word:
+		lexeme: "while"
+		type:   WHILE
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "<"
+		type:   LT
+	identifier:
+		lexeme: "high"
+		type:   ID
+	special symbol:
+		lexeme: "-"
+		type:   MINUS
+	number:
+		lexeme: "1"
+		type:   NUM
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: "{"
+		type:   LBRACE
+line 28:
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "t"
+		type:   ID
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 29:
+	identifier:
+		lexeme: "k"
+		type:   ID
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	identifier:
+		lexeme: "minloc"
+		type:   ID
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	identifier:
+		lexeme: "a"
+		type:   ID
+	special symbol:
+		lexeme: ","
+		type:   COMMA
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: ","
+		type:   COMMA
+	identifier:
+		lexeme: "high"
+		type:   ID
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 30:
+	identifier:
+		lexeme: "t"
+		type:   ID
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	identifier:
+		lexeme: "a"
+		type:   ID
+	special symbol:
+		lexeme: "["
+		type:   LBRACK
+	identifier:
+		lexeme: "k"
+		type:   ID
+	special symbol:
+		lexeme: "]"
+		type:   RBRACK
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 31:
+	identifier:
+		lexeme: "a"
+		type:   ID
+	special symbol:
+		lexeme: "["
+		type:   LBRACK
+	identifier:
+		lexeme: "k"
+		type:   ID
+	special symbol:
+		lexeme: "]"
+		type:   RBRACK
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	identifier:
+		lexeme: "a"
+		type:   ID
+	special symbol:
+		lexeme: "["
+		type:   LBRACK
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "]"
+		type:   RBRACK
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 32:
+	identifier:
+		lexeme: "a"
+		type:   ID
+	special symbol:
+		lexeme: "["
+		type:   LBRACK
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "]"
+		type:   RBRACK
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	identifier:
+		lexeme: "t"
+		type:   ID
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 33:
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "+"
+		type:   PLUS
+	number:
+		lexeme: "1"
+		type:   NUM
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 34:
+	special symbol:
+		lexeme: "}"
+		type:   RBRACE
+line 35:
+	special symbol:
+		lexeme: "}"
+		type:   RBRACE
+line 36:
+line 37:
+	reserved word:
+		lexeme: "void"
+		type:   VOID
+	identifier:
+		lexeme: "main"
+		type:   ID
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	reserved word:
+		lexeme: "void"
+		type:   VOID
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: "{"
+		type:   LBRACE
+line 38:
+	reserved word:
+		lexeme: "int"
+		type:   INT
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 39:
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	number:
+		lexeme: "0"
+		type:   NUM
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 40:
+	reserved word:
+		lexeme: "while"
+		type:   WHILE
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "<"
+		type:   LT
+	number:
+		lexeme: "10"
+		type:   NUM
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: "{"
+		type:   LBRACE
+line 41:
+	identifier:
+		lexeme: "x"
+		type:   ID
+	special symbol:
+		lexeme: "["
+		type:   LBRACK
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "]"
+		type:   RBRACK
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	reserved word:
+		lexeme: "input"
+		type:   INPUT
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 42:
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "+"
+		type:   PLUS
+	number:
+		lexeme: "1"
+		type:   NUM
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 43:
+	special symbol:
+		lexeme: "}"
+		type:   RBRACE
+line 44:
+	identifier:
+		lexeme: "sort"
+		type:   ID
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	identifier:
+		lexeme: "x"
+		type:   ID
+	special symbol:
+		lexeme: ","
+		type:   COMMA
+	number:
+		lexeme: "0"
+		type:   NUM
+	special symbol:
+		lexeme: ","
+		type:   COMMA
+	number:
+		lexeme: "10"
+		type:   NUM
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 45:
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	number:
+		lexeme: "0"
+		type:   NUM
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 46:
+	reserved word:
+		lexeme: "while"
+		type:   WHILE
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "<"
+		type:   LT
+	number:
+		lexeme: "10"
+		type:   NUM
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: "{"
+		type:   LBRACE
+line 47:
+	reserved word:
+		lexeme: "output"
+		type:   OUTPUT
+	special symbol:
+		lexeme: "("
+		type:   LPAREN
+	identifier:
+		lexeme: "x"
+		type:   ID
+	special symbol:
+		lexeme: "["
+		type:   LBRACK
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "]"
+		type:   RBRACK
+	special symbol:
+		lexeme: ")"
+		type:   RPAREN
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 48:
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "="
+		type:   ASSIGN
+	identifier:
+		lexeme: "i"
+		type:   ID
+	special symbol:
+		lexeme: "+"
+		type:   PLUS
+	number:
+		lexeme: "1"
+		type:   NUM
+	special symbol:
+		lexeme: ";"
+		type:   SEMI
+line 49:
+	special symbol:
+		lexeme: "}"
+		type:   RBRACE
+line 50:
+	special symbol:
+		lexeme: "}"
+		type:   RBRACE
+line 51:
+line 52:
+	trace:
+		lexeme: ""
+		type:   ENDFILE

@@ -16,6 +16,7 @@ APP_DIR := $(BUILD)
 FLX_SRC := lex.yy.c
 
 TEST_DIR         := ./test
+FIXTURES_DIR     := $(TEST_DIR)/fixtures
 LEXICAL_TEST_DIR := $(TEST_DIR)/lexical
 
 SRC := $(shell ls $(SRC_DIR)/*.c)
@@ -54,8 +55,10 @@ format:
 	clang-format -style=file -i $(NON_AUTOMATIC_SRC) $(HEADERS)
 
 check-lexical: $(APP_DIR)/$(LEXICAL_TEST)
-	@$(BUILD)/$(LEXICAL_TEST)
+	@$(BUILD)/$(LEXICAL_TEST) $(FIXTURES_DIR)/gcd.cm $(LEXICAL_TEST_DIR)/resulting-gcd-tokens.yml
+	@$(BUILD)/$(LEXICAL_TEST) $(FIXTURES_DIR)/sort.cm $(LEXICAL_TEST_DIR)/resulting-sort-tokens.yml
 	@cmp $(LEXICAL_TEST_DIR)/expected-gcd-tokens.yml $(LEXICAL_TEST_DIR)/resulting-gcd-tokens.yml
+	@cmp $(LEXICAL_TEST_DIR)/expected-sort-tokens.yml $(LEXICAL_TEST_DIR)/resulting-sort-tokens.yml
 
 clean:
 	-@rm -rvf $(OBJ_DIR)/*
