@@ -159,9 +159,9 @@ line 14:
 	special symbol:
 		lexeme: "="
 		type:   ASSIGN
-	reserved word:
+	identifier:
 		lexeme: "input"
-		type:   INPUT
+		type:   ID
 	special symbol:
 		lexeme: "("
 		type:   LPAREN
@@ -178,9 +178,9 @@ line 15:
 	special symbol:
 		lexeme: "="
 		type:   ASSIGN
-	reserved word:
+	identifier:
 		lexeme: "input"
-		type:   INPUT
+		type:   ID
 	special symbol:
 		lexeme: "("
 		type:   LPAREN
@@ -191,9 +191,9 @@ line 15:
 		lexeme: ";"
 		type:   SEMI
 line 16:
-	reserved word:
+	identifier:
 		lexeme: "output"
-		type:   OUTPUT
+		type:   ID
 	special symbol:
 		lexeme: "("
 		type:   LPAREN

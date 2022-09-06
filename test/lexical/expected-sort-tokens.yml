@@ -615,9 +615,9 @@ line 41:
 	special symbol:
 		lexeme: "="
 		type:   ASSIGN
-	reserved word:
+	identifier:
 		lexeme: "input"
-		type:   INPUT
+		type:   ID
 	special symbol:
 		lexeme: "("
 		type:   LPAREN
@@ -714,9 +714,9 @@ line 46:
 		lexeme: "{"
 		type:   LBRACE
 line 47:
-	reserved word:
+	identifier:
 		lexeme: "output"
-		type:   OUTPUT
+		type:   ID
 	special symbol:
 		lexeme: "("
 		type:   LPAREN

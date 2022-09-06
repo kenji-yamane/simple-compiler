@@ -9,8 +9,6 @@ void printToken(TokenType token, const char *tokenString) {
     case IF:
     case ELSE:
     case WHILE:
-    case INPUT:
-    case OUTPUT:
     case INT:
     case RETURN:
     case VOID:
@@ -68,12 +66,6 @@ void tokenTypeToString(TokenType token) {
         break;
     case WHILE:
         fprintf(listing, "WHILE");
-        break;
-    case INPUT:
-        fprintf(listing, "INPUT");
-        break;
-    case OUTPUT:
-        fprintf(listing, "OUTPUT");
         break;
     case INT:
         fprintf(listing, "INT");

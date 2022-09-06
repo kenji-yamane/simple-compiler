@@ -15,8 +15,6 @@ whitespace  [ \t]+
 "if"            {return IF;}
 "else"          {return ELSE;}
 "while"         {return WHILE;}
-"input"         {return INPUT;}
-"output"        {return OUTPUT;}
 "int"           {return INT;}
 "return"        {return RETURN;}
 "void"          {return VOID;}
