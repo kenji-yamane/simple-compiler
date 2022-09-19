@@ -25,8 +25,6 @@ typedef enum {
     IF,
     ELSE,
     WHILE,
-    INPUT,
-    OUTPUT,
     INT,
     RETURN,
     VOID,
