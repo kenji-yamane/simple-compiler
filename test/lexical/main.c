@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    fprintf(listing, "# C- COMPILATION: %s\n", "gcd.cm");
+    fprintf(listing, "# C- COMPILATION: %s\n", argv[1]);
     while (getToken() != ENDFILE)
         ;
 

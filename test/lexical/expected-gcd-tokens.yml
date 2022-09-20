@@ -1,4 +1,4 @@
-# C- COMPILATION: gcd.cm
+# C- COMPILATION: ./test/fixtures/gcd.cm
 line 1:
 line 3:
 	reserved word:
