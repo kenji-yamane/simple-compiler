@@ -51,7 +51,7 @@ whitespace  [ \t]+
 					do {
 						last = c;
 					    c = input();
-					    if (c == EOF)
+					    if (c == YY_NULL)
 					        break;
 					    if (c == '\n')
 					        lineno++;
