@@ -189,6 +189,25 @@ TreeNode *newExpNode(ExpKind kind) {
     return t;
 }
 
+/* Function newDeclNode creates a new declaration
+ * node for syntax tree construction
+ */
+TreeNode *newDeclNode(ExpType type) {
+    TreeNode *t = (TreeNode *)malloc(sizeof(TreeNode));
+    int i;
+    if (t == NULL)
+        fprintf(listing, "Out of memory error at line %d\n", lineno);
+    else {
+        for (i = 0; i < MAXCHILDREN; i++)
+            t->child[i] = NULL;
+        t->sibling = NULL;
+        t->nodekind = DeclK;
+        t->lineno = lineno;
+        t->type = type;
+    }
+    return t;
+}
+
 /* Function copyString allocates and makes a new
  * copy of an existing string
  */
@@ -233,22 +252,19 @@ void printTree(TreeNode *tree) {
         if (tree->nodekind == StmtK) {
             switch (tree->kind.stmt) {
             case IfK:
-                fprintf(listing, "If\n");
+                fprintf(listing, "if\n");
                 break;
             case RepeatK:
-                fprintf(listing, "Repeat\n");
+                fprintf(listing, "while\n");
                 break;
             case AssignK:
-                fprintf(listing, "Assign to: %s\n", tree->attr.name);
+                fprintf(listing, "=\n");
                 break;
-            case ReadK:
-                fprintf(listing, "Read: %s\n", tree->attr.name);
-                break;
-            case WriteK:
-                fprintf(listing, "Write\n");
+            case ReturnK:
+                fprintf(listing, "return\n");
                 break;
             default:
-                fprintf(listing, "Unknown ExpNode kind\n");
+                fprintf(listing, "Unknown StmtNode kind\n");
                 break;
             }
         } else if (tree->nodekind == ExpK) {
@@ -267,6 +283,32 @@ void printTree(TreeNode *tree) {
                 fprintf(listing, "Unknown ExpNode kind\n");
                 break;
             }
+        } else if (tree->nodekind = DeclK) {
+            switch (tree->kind.decl) {
+            case VarK:
+                fprintf(listing, "Decl: var ");
+                break;
+            case VecK:
+                fprintf(listing, "Decl: vec ");
+                break;
+            case FunK:
+                fprintf(listing, "Decl: fun ");
+                break;
+            default:
+                fprintf(listing, "Unknown DeclNode kind\n");
+                break;
+            }
+            switch(tree->type) {
+            case Integer:
+                fprintf(listing, "int\n"); break;
+            case Void:
+                fprintf(listing, "void\n"); break;
+            case Boolean:
+                fprintf(listing, "boolean\n"); break;
+            default:
+                fprintf(listing, "Unknown DeclNode type\n");
+                break;
+            }
         } else
             fprintf(listing, "Unknown node kind\n");
         for (i = 0; i < MAXCHILDREN; i++)
@@ -275,3 +317,24 @@ void printTree(TreeNode *tree) {
     }
     UNINDENT;
 }
+
+
+
+stack push(stack s, void* val) {
+    struct node* n = malloc(sizeof(struct node));
+    n->val = val;
+    n->next = (struct node*) s;
+    return n;
+}
+
+void* front(stack s) {
+    return s->val;
+}
+
+stack pop(stack s) {
+    struct node* head = s;
+    s = (stack) s->next;
+    free(head);
+    return s;
+}
+

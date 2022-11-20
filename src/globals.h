@@ -27,7 +27,7 @@
 #ifndef YYPARSER
 
     /* the name of the following file may change */
-    #include "tiny.tab.h"
+    #include "cminus.tab.h"
 
     /* ENDFILE is implicitly defined by Yacc/Bison,
      * and not included in the tab.h file
@@ -59,9 +59,10 @@ extern int lineno; /* source line number for listing */
 /***********   Syntax tree for parsing ************/
 /**************************************************/
 
-typedef enum { StmtK, ExpK } NodeKind;
-typedef enum { IfK, RepeatK, AssignK, ReadK, WriteK } StmtKind;
+typedef enum { StmtK, ExpK, DeclK } NodeKind;
+typedef enum { IfK, RepeatK, AssignK, ReturnK } StmtKind;
 typedef enum { OpK, ConstK, IdK } ExpKind;
+typedef enum { VarK, VecK, FunK } DeclKind;
 
 /* ExpType is used for type checking */
 typedef enum { Void, Integer, Boolean } ExpType;
@@ -76,6 +77,7 @@ typedef struct treeNode {
     union {
         StmtKind stmt;
         ExpKind exp;
+        DeclKind decl;
     } kind;
     union {
         TokenType op;

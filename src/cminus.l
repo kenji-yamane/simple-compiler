@@ -4,6 +4,9 @@
 #include "scan.h"
 /* lexeme of identifier or reserved word */
 char tokenString[MAXTOKENLEN+1];
+char *identifierString;
+char *numberString;
+
 %}
 digit       [0-9]
 number      {digit}+
@@ -37,8 +40,8 @@ whitespace  [ \t]+
 "]"             {return RBRACK;}
 "{"             {return LBRACE;}
 "}"             {return RBRACE;}
-{number}        {return NUM;}
-{identifier}    {return ID;}
+{number}        { numberString = copyString(yytext);return NUM;}
+{identifier}    { identifierString = copyString(yytext); return ID;}
 {newline}       {
 					lineno++;
 					if (TraceScan) {

@@ -6,6 +6,8 @@
 
 /* tokenString array stores the lexeme of each token */
 extern char tokenString[MAXTOKENLEN + 1];
+extern char *identifierString;
+extern char *numberString;
 
 /* function getToken returns the
  * next token in source file

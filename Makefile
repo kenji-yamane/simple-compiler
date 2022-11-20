@@ -67,6 +67,13 @@ clean:
 flex:
 	flex -o $(SRC_DIR)/$(FLX_SRC) $(FLX)
 
+bison:
+	# bison -d src/cminus.y -o src/cminus.tab.c
+	# flex src/cminus.l
+	# gcc -c *.c
+	# gcc -o tiny *.o -ly -lfl
+
+
 info: flex
 	@echo "[*] Sources:      $(SRC) "
 	@echo "[*] Objects:      $(OBJ) "

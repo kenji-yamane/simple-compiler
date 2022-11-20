@@ -23,6 +23,11 @@ TreeNode *newStmtNode(StmtKind);
  */
 TreeNode *newExpNode(ExpKind);
 
+/* Function newDeclNode creates a new declaration
+ * node for syntax tree construction
+ */
+TreeNode *newDeclNode(ExpType);
+
 /* Function copyString allocates and makes a new
  * copy of an existing string
  */
@@ -32,5 +37,19 @@ char *copyString(char *);
  * listing file using indentation to indicate subtrees
  */
 void printTree(TreeNode *);
+
+
+/* Stack abstraction
+ */
+struct node {
+    void *val;
+    struct node *next;
+};
+
+typedef struct node *stack;
+
+stack push(stack s, void* val);
+void* front(stack s);
+stack pop(stack s);
 
 #endif
