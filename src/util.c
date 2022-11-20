@@ -298,13 +298,16 @@ void printTree(TreeNode *tree) {
                 fprintf(listing, "Unknown DeclNode kind\n");
                 break;
             }
-            switch(tree->type) {
+            switch (tree->type) {
             case Integer:
-                fprintf(listing, "int\n"); break;
+                fprintf(listing, "int\n");
+                break;
             case Void:
-                fprintf(listing, "void\n"); break;
+                fprintf(listing, "void\n");
+                break;
             case Boolean:
-                fprintf(listing, "boolean\n"); break;
+                fprintf(listing, "boolean\n");
+                break;
             default:
                 fprintf(listing, "Unknown DeclNode type\n");
                 break;
@@ -318,23 +321,18 @@ void printTree(TreeNode *tree) {
     UNINDENT;
 }
 
-
-
-stack push(stack s, void* val) {
-    struct node* n = malloc(sizeof(struct node));
+stack push(stack s, void *val) {
+    struct node *n = malloc(sizeof(struct node));
     n->val = val;
-    n->next = (struct node*) s;
+    n->next = (struct node *)s;
     return n;
 }
 
-void* front(stack s) {
-    return s->val;
-}
+void *front(stack s) { return s->val; }
 
 stack pop(stack s) {
-    struct node* head = s;
-    s = (stack) s->next;
+    struct node *head = s;
+    s = (stack)s->next;
     free(head);
     return s;
 }
-

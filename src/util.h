@@ -38,7 +38,6 @@ char *copyString(char *);
  */
 void printTree(TreeNode *);
 
-
 /* Stack abstraction
  */
 struct node {
@@ -48,8 +47,8 @@ struct node {
 
 typedef struct node *stack;
 
-stack push(stack s, void* val);
-void* front(stack s);
+stack push(stack s, void *val);
+void *front(stack s);
 stack pop(stack s);
 
 #endif
