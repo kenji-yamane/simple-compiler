@@ -323,7 +323,7 @@ void printTree(TreeNode *tree) {
                 fprintf(listing, "Unknown ExpNode kind\n");
                 break;
             }
-        } else if (tree->nodekind = DeclK) {
+        } else if (tree->nodekind == DeclK) {
             switch (tree->kind.decl) {
             case VarK:
                 fprintf(listing, "Decl: var ");
