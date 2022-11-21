@@ -57,43 +57,43 @@ void printToken(TokenType token, const char *tokenString) {
 }
 
 void printOp(TokenType token) {
-	switch (token) {
+    switch (token) {
     case PLUS:
-		fprintf(listing, "+\n");
-		break;
+        fprintf(listing, "+\n");
+        break;
     case MINUS:
-		fprintf(listing, "-\n");
-		break;
+        fprintf(listing, "-\n");
+        break;
     case TIMES:
-		fprintf(listing, "*\n");
-		break;
+        fprintf(listing, "*\n");
+        break;
     case OVER:
-		fprintf(listing, "/\n");
-		break;
+        fprintf(listing, "/\n");
+        break;
     case LT:
-		fprintf(listing, "<\n");
-		break;
+        fprintf(listing, "<\n");
+        break;
     case LTEQ:
-		fprintf(listing, "<=\n");
-		break;
+        fprintf(listing, "<=\n");
+        break;
     case GT:
-		fprintf(listing, ">\n");
-		break;
+        fprintf(listing, ">\n");
+        break;
     case GTEQ:
-		fprintf(listing, ">=\n");
-		break;
+        fprintf(listing, ">=\n");
+        break;
     case EQ:
-		fprintf(listing, "==\n");
-		break;
+        fprintf(listing, "==\n");
+        break;
     case NEQ:
-		fprintf(listing, "!=\n");
-		break;
+        fprintf(listing, "!=\n");
+        break;
     case ASSIGN:
-		fprintf(listing, "=\n");
-		break;
-	default:
-		fprintf(listing, "unexpected token, unable to print\n");
-	}
+        fprintf(listing, "=\n");
+        break;
+    default:
+        fprintf(listing, "unexpected token, unable to print\n");
+    }
 }
 
 void tokenTypeToString(TokenType token) {
