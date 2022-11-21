@@ -56,6 +56,46 @@ void printToken(TokenType token, const char *tokenString) {
     fprintf(listing, "\n");
 }
 
+void printOp(TokenType token) {
+	switch (token) {
+    case PLUS:
+		fprintf(listing, "+\n");
+		break;
+    case MINUS:
+		fprintf(listing, "-\n");
+		break;
+    case TIMES:
+		fprintf(listing, "*\n");
+		break;
+    case OVER:
+		fprintf(listing, "/\n");
+		break;
+    case LT:
+		fprintf(listing, "<\n");
+		break;
+    case LTEQ:
+		fprintf(listing, "<=\n");
+		break;
+    case GT:
+		fprintf(listing, ">\n");
+		break;
+    case GTEQ:
+		fprintf(listing, ">=\n");
+		break;
+    case EQ:
+		fprintf(listing, "==\n");
+		break;
+    case NEQ:
+		fprintf(listing, "!=\n");
+		break;
+    case ASSIGN:
+		fprintf(listing, "=\n");
+		break;
+	default:
+		fprintf(listing, "unexpected token, unable to print\n");
+	}
+}
+
 void tokenTypeToString(TokenType token) {
     switch (token) {
     case IF:
@@ -271,7 +311,7 @@ void printTree(TreeNode *tree) {
             switch (tree->kind.exp) {
             case OpK:
                 fprintf(listing, "Op: ");
-                printToken(tree->attr.op, "\0");
+                printOp(tree->attr.op);
                 break;
             case ConstK:
                 fprintf(listing, "Const: %d\n", tree->attr.val);

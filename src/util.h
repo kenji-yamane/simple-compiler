@@ -8,6 +8,11 @@
  */
 void printToken(TokenType, const char *);
 
+/* Procedure printOp prints a char
+ * representative of the operation
+ */
+void printOp(TokenType);
+
 /* Simply prints the corresponding string
  * to the enum variable
  */
