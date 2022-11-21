@@ -62,3 +62,7 @@ build
 
 # Environment files
 .vscode
+
+# Compilers
+tiny
+cminus
