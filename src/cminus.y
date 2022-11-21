@@ -64,7 +64,6 @@ decl
 var_decl
     : tipo ID        
         {
-            printf("saving name: %s\n", identifierString);
             savedName = push(savedName, copyString(identifierString));
             savedLine = push(savedLine, (void*) lineno);
         }
@@ -112,12 +111,10 @@ tipo
     : INT 
         { 
             $$ = newDeclNode(Integer);
-            printf("tipo int\n");
         }
     | VOID 
         { 
             $$ = newDeclNode(Void);
-            printf("tipo void\n");
         }
     ;
 
@@ -193,7 +190,6 @@ param
 comp_decl
     : LBRACE local_decl stmt_lista RBRACE
         {
-            printf("comp_decl!\n");
             YYSTYPE t = $2;
             if ($2 != NULL) {
                 while(t->sibling != NULL)
@@ -208,7 +204,6 @@ comp_decl
 local_decl
     : local_decl var_decl
         {
-            printf("local_decl\n");
             YYSTYPE t = $1;
             if (t != NULL) {
                 while (t->sibling != NULL)
@@ -224,7 +219,6 @@ local_decl
 stmt_lista
     : stmt_lista stmt
         {
-            printf("smtm_lista!\n");
             YYSTYPE t = $1;
             if (t != NULL) {
                 while (t->sibling != NULL)
@@ -234,7 +228,7 @@ stmt_lista
             } else
                 $$ = $2;
         }
-    | %empty { printf("stmt_lista\n"); $$ = NULL; }
+    | %empty { $$ = NULL; }
     ;
 
 stmt
@@ -242,12 +236,12 @@ stmt
     | comp_decl { $$ = $1; }
     | selc_decl { $$ = $1; }
     | iter_decl { $$ = $1; }
-    | retr_decl { printf("smtm!\n"); $$ = $1; }
+    | retr_decl { $$ = $1; }
     ;
 
 expr_decl
-    : exp SEMI { printf("smtm!\n"); $$ = $1; }
-    | SEMI { printf("smtm!\n"); $$ = NULL; }
+    : exp SEMI { $$ = $1; }
+    | SEMI { $$ = NULL; }
     ;
 
 selc_decl
@@ -315,8 +309,8 @@ var
             $$->attr.name = front(savedName);
             $$->lineno = (int) front(savedLine);
 
-            pop(savedName);
-            pop(savedLine);
+            savedName = pop(savedName);
+            savedLine = pop(savedLine);
         }
     ;
 
@@ -388,13 +382,15 @@ ativacao
         } 
       LPAREN args RPAREN
         {
+            printf("1\n");
             $$ = newExpNode(IdK);
             $$->child[0] = $4;
             $$->attr.name = front(savedName);
             $$->lineno = (int) front(savedLine);
-
+            printf("2\n");
             savedName = pop(savedName);
             savedLine = pop(savedLine);
+            printf("3\n");
         }
     ;
 
