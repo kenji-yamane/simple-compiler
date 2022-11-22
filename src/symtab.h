@@ -9,9 +9,9 @@
 #ifndef _SYMTAB_H_
 #define _SYMTAB_H_
 
+#include "globals.h"
 #include <stdbool.h>
 #include <stdio.h>
-#include "globals.h"
 
 /* the list of line numbers of the source
  * code in which a variable is referenced
@@ -42,7 +42,8 @@ typedef BucketListRec *BucketList;
 
 bool equalRecs(BucketListRec *l, char *name, int scope);
 
-BucketListRec *st_insert(char *name, int lineno, int scope, ExpType type, bool isFunction);
+BucketListRec *st_insert(char *name, int lineno, int scope, ExpType type,
+                         bool isFunction);
 
 bool st_lookup(char *name, int scope);
 
@@ -50,7 +51,7 @@ void st_remove(int scope);
 
 void removeNext(BucketListRec *l);
 
-BucketListRec* removeHead(BucketListRec *head);
+BucketListRec *removeHead(BucketListRec *head);
 
 void freeRec(BucketListRec *l);
 

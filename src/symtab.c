@@ -31,13 +31,13 @@ static int hash(char *key) {
 }
 
 bool equalRecs(BucketListRec *l, char *name, int scope) {
-	if (strcmp(l->name, name) != 0) {
-		return false;
-	}
-	if (l->scope != scope) {
-		return false;
-	}
-	return true;
+    if (strcmp(l->name, name) != 0) {
+        return false;
+    }
+    if (l->scope != scope) {
+        return false;
+    }
+    return true;
 }
 
 /* the hash table */
@@ -48,32 +48,33 @@ static BucketList hashTable[SIZE];
  * was already in the symbol table, it
  * adds a new line
  */
-BucketListRec *st_insert(char *name, int lineno, int scope, ExpType type, bool isFunction) {
+BucketListRec *st_insert(char *name, int lineno, int scope, ExpType type,
+                         bool isFunction) {
     int h = hash(name);
     BucketList l = hashTable[h];
     while (l != NULL && !equalRecs(l, name, scope))
         l = l->next;
-	if (l != NULL) { /* found in table, so just add line number */
+    if (l != NULL) { /* found in table, so just add line number */
         LineListRec *t = l->lines;
         while (t->next != NULL)
             t = t->next;
-        t->next = (LineListRec*)malloc(sizeof(LineListRec));
+        t->next = (LineListRec *)malloc(sizeof(LineListRec));
         t->next->lineno = lineno;
         t->next->next = NULL;
-	}
+    }
 
-	/* variable not yet in table, so we'll add it */
-    l = (BucketListRec*)malloc(sizeof(BucketListRec));
+    /* variable not yet in table, so we'll add it */
+    l = (BucketListRec *)malloc(sizeof(BucketListRec));
     l->name = name;
-    l->lines = (LineListRec*)malloc(sizeof(LineListRec));
+    l->lines = (LineListRec *)malloc(sizeof(LineListRec));
     l->lines->lineno = lineno;
-	l->type = type;
-	l->scope = scope;
-	l->isFunction = isFunction;
+    l->type = type;
+    l->scope = scope;
+    l->isFunction = isFunction;
     l->lines->next = NULL;
     l->next = hashTable[h];
     hashTable[h] = l;
-	return l;
+    return l;
 } /* st_insert */
 
 /* Function st_lookup returns if a given variable
@@ -84,46 +85,46 @@ bool st_lookup(char *name, int scope) {
     BucketList l = hashTable[h];
     while ((l != NULL) && !equalRecs(l, name, scope))
         l = l->next;
-	return !(l == NULL);
+    return !(l == NULL);
 }
 
 /* Function st_remove removes every variable
  * that has the given scope
  */
 void st_remove(int scope) {
-	for (int i = 0; i < SIZE; i++) {
-		BucketList l = hashTable[i], head = l;
-		while (l != NULL && l->scope == scope) {
-			l = removeHead(l);
-		}
-		while (l != NULL && l->next != NULL) {
-			if (l->next->scope == scope) {
-				removeNext(l);
-			} else {
-				l = l->next;
-			}
-		}
-	}
+    for (int i = 0; i < SIZE; i++) {
+        BucketList l = hashTable[i], head = l;
+        while (l != NULL && l->scope == scope) {
+            l = removeHead(l);
+        }
+        while (l != NULL && l->next != NULL) {
+            if (l->next->scope == scope) {
+                removeNext(l);
+            } else {
+                l = l->next;
+            }
+        }
+    }
 }
 
 /* Function removeNext
  * removes the node after l
  */
 void removeNext(BucketListRec *l) {
-	BucketListRec *nextNext = l->next->next;
-	freeRec(l->next);
-	l->next = nextNext;
+    BucketListRec *nextNext = l->next->next;
+    freeRec(l->next);
+    l->next = nextNext;
 }
 
 /* Function removeHead
  * removes the head of a linked list
  * returning the new head
  */
-BucketListRec* removeHead(BucketListRec *head) {
-	BucketListRec *prev = head;
-	head = head->next;
-	freeRec(prev);
-	return head;
+BucketListRec *removeHead(BucketListRec *head) {
+    BucketListRec *prev = head;
+    head = head->next;
+    freeRec(prev);
+    return head;
 }
 
 /* Function freeRec frees
@@ -131,12 +132,12 @@ BucketListRec* removeHead(BucketListRec *head) {
  */
 void freeRec(BucketListRec *l) {
     LineList t = l->lines, prev = NULL;
-	while (t != NULL) {
-		prev = t;
-		t = t->next;
-		free(prev);
-	}
-	free(l);
+    while (t != NULL) {
+        prev = t;
+        t = t->next;
+        free(prev);
+    }
+    free(l);
 }
 
 /* Procedure printSymTab prints a formatted
