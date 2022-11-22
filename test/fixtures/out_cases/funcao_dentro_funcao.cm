@@ -1,0 +1,17 @@
+
+CMINUS COMPILATION: cases/funcao_dentro_funcao.cm
+Syntax error at line 7: syntax error
+Current token: 	reserved word:
+		lexeme: "return"
+		type:   RETURN
+
+Syntax tree:
+fun void
+  └─id: funcao
+      ├─var int
+      │ │ └─id: x
+      │ var int
+      │   └─id: y
+      └─while
+          ├─const: 1
+          └─id: break

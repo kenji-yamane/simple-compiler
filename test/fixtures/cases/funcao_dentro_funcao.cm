@@ -1,0 +1,7 @@
+void funcao(int x, int y){
+    while(1){
+        break;
+    }
+}
+
+return;

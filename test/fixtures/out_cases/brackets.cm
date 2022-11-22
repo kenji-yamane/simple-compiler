@@ -1,0 +1,7 @@
+
+CMINUS COMPILATION: cases/brackets.cm
+
+Syntax tree:
+vec int
+  ├─id: x
+  └─const: 10
