@@ -25,7 +25,7 @@ int yyerror(char *s);
 
 
 %start programa
-%token ENDFILE ERROR
+%token ERROR
 %token IF WHILE INT RETURN VOID
 %token ID NUM
 %token SEMI COMMA LPAREN RPAREN LBRACK RBRACK LBRACE RBRACE
@@ -416,9 +416,13 @@ arg_lista
 %%
 
 int yyerror(char * message) {
-    fprintf(listing,"Syntax error at line %d: %s\n",lineno,message);
-    fprintf(listing,"Current token: ");
-    printToken(yychar,tokenString);
+    if (yychar == ERROR)
+        fprintf(listing,"Lexical error for '%s' at line %d: unknown lexeme\n", tokenString, lineno);
+    else if (yychar == ENDFILE)
+        fprintf(listing,"Lexical error for '%s' at line %d: unexpected EOF\n", tokenString, lineno);
+    else {
+        fprintf(listing,"Syntax error for '%s' at line %d: %s\n", tokenTypeToString(yychar), lineno, message);
+    }
     Error = TRUE;
     return 0;
 }

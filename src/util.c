@@ -51,9 +51,7 @@ void printToken(TokenType token, const char *tokenString) {
         fprintf(listing, "\tunknown:        %d\n", token);
     }
     fprintf(listing, "\t\tlexeme: \"%s\"\n", tokenString);
-    fprintf(listing, "\t\ttype:   ");
-    tokenTypeToString(token);
-    fprintf(listing, "\n");
+    fprintf(listing, "\t\ttype:   %s\n", tokenTypeToString(token));
 }
 
 void printOp(TokenType token) {
@@ -96,97 +94,68 @@ void printOp(TokenType token) {
     }
 }
 
-void tokenTypeToString(TokenType token) {
+char *tokenTypeToString(TokenType token) {
     switch (token) {
     case IF:
-        fprintf(listing, "IF");
-        break;
+        return "IF";
     case ELSE:
-        fprintf(listing, "ELSE");
-        break;
+        return "ELSE";
     case WHILE:
-        fprintf(listing, "WHILE");
-        break;
+        return "WHILE";
     case INT:
-        fprintf(listing, "INT");
-        break;
+        return "INT";
     case RETURN:
-        fprintf(listing, "RETURN");
-        break;
+        return "RETURN";
     case VOID:
-        fprintf(listing, "VOID");
-        break;
+        return "VOID";
     case PLUS:
-        fprintf(listing, "PLUS");
-        break;
+        return "PLUS";
     case MINUS:
-        fprintf(listing, "MINUS");
-        break;
+        return "MINUS";
     case TIMES:
-        fprintf(listing, "TIMES");
-        break;
+        return "TIMES";
     case OVER:
-        fprintf(listing, "OVER");
-        break;
+        return "OVER";
     case LT:
-        fprintf(listing, "LT");
-        break;
+        return "LT";
     case LTEQ:
-        fprintf(listing, "LTEQ");
-        break;
+        return "LTEQ";
     case GT:
-        fprintf(listing, "GT");
-        break;
+        return "GT";
     case GTEQ:
-        fprintf(listing, "GTEQ");
-        break;
+        return "GTEQ";
     case EQ:
-        fprintf(listing, "EQ");
-        break;
+        return "EQ";
     case NEQ:
-        fprintf(listing, "NEQ");
-        break;
+        return "NEQ";
     case ASSIGN:
-        fprintf(listing, "ASSIGN");
-        break;
+        return "ASSIGN";
     case SEMI:
-        fprintf(listing, "SEMI");
-        break;
+        return "SEMI";
     case COMMA:
-        fprintf(listing, "COMMA");
-        break;
+        return "COMMA";
     case LPAREN:
-        fprintf(listing, "LPAREN");
-        break;
+        return "LPAREN";
     case RPAREN:
-        fprintf(listing, "RPAREN");
-        break;
+        return "RPAREN";
     case LBRACK:
-        fprintf(listing, "LBRACK");
-        break;
+        return "LBRACK";
     case RBRACK:
-        fprintf(listing, "RBRACK");
-        break;
+        return "RBRACK";
     case LBRACE:
-        fprintf(listing, "LBRACE");
-        break;
+        return "LBRACE";
     case RBRACE:
-        fprintf(listing, "RBRACE");
-        break;
+        return "RBRACE";
     case NUM:
-        fprintf(listing, "NUM");
-        break;
+        return "NUM";
     case ID:
-        fprintf(listing, "ID");
-        break;
+        return "ID";
     case ENDFILE:
-        fprintf(listing, "ENDFILE");
-        break;
+        return "ENDFILE";
     case ERROR:
-        fprintf(listing, "ERROR");
-        break;
+        return "ERROR";
     default: /* should never happen */
-        fprintf(listing, "\tunknown:        %d\n", token);
+        return "UNKNOWN";
     }
 }
 

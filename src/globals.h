@@ -32,9 +32,9 @@
     /* ENDFILE is implicitly defined by Yacc/Bison,
      * and not included in the tab.h file
      */
-    #define ENDFILE 0
-
 #endif
+
+#define ENDFILE 0
 
 #ifndef FALSE
     #define FALSE 0

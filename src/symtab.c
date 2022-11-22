@@ -21,6 +21,7 @@
 
 /* the hash function */
 static int hash(char *key) {
+    // printf(">>>> key: %s\n", key);
     int temp = 0;
     int i = 0;
     while (key[i] != '\0') {
@@ -49,11 +50,14 @@ static BucketList hashTable[SIZE];
  * adds a new line
  */
 BucketListRec *st_insert(char *name, int lineno, int scope, ExpType type,
-                         bool isFunction) {
+                         DeclKind kind) {
+    // printf("!\n");
     int h = hash(name);
+    // printf(")\n");
     BucketList l = hashTable[h];
     while (l != NULL && !equalRecs(l, name, scope))
         l = l->next;
+    // printf("#\n");
     if (l != NULL) { /* found in table, so just add line number */
         LineListRec *t = l->lines;
         while (t->next != NULL)
@@ -62,7 +66,7 @@ BucketListRec *st_insert(char *name, int lineno, int scope, ExpType type,
         t->next->lineno = lineno;
         t->next->next = NULL;
     }
-
+    // printf("&\n");
     /* variable not yet in table, so we'll add it */
     l = (BucketListRec *)malloc(sizeof(BucketListRec));
     l->name = name;
@@ -70,22 +74,25 @@ BucketListRec *st_insert(char *name, int lineno, int scope, ExpType type,
     l->lines->lineno = lineno;
     l->type = type;
     l->scope = scope;
-    l->isFunction = isFunction;
+    l->kind = kind;
     l->lines->next = NULL;
     l->next = hashTable[h];
     hashTable[h] = l;
+    // printf("@\n");
     return l;
 } /* st_insert */
 
 /* Function st_lookup returns if a given variable
  * already exists in the table
  */
-bool st_lookup(char *name, int scope) {
+BucketList st_lookup(char *name, int scope) {
+    // printf("> lookup: %s\n", name);
     int h = hash(name);
     BucketList l = hashTable[h];
     while ((l != NULL) && !equalRecs(l, name, scope))
         l = l->next;
-    return !(l == NULL);
+    // printf("ok! %d\n", (int) l);
+    return l;
 }
 
 /* Function st_remove removes every variable

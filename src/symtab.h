@@ -33,19 +33,20 @@ struct BucketListRec {
     char *name;
     int scope;
     ExpType type;
-    bool isFunction;
+    DeclKind kind;
     LineList lines;
     struct BucketListRec *next;
 };
+
 typedef struct BucketListRec BucketListRec;
 typedef BucketListRec *BucketList;
 
 bool equalRecs(BucketListRec *l, char *name, int scope);
 
 BucketListRec *st_insert(char *name, int lineno, int scope, ExpType type,
-                         bool isFunction);
+                         DeclKind kind);
 
-bool st_lookup(char *name, int scope);
+BucketList st_lookup(char *name, int scope);
 
 void st_remove(int scope);
 
