@@ -1,0 +1,8 @@
+
+CMINUS COMPILATION: cases/gcd_sem_terminar_comentario.cm
+Syntax error at line 18: syntax error
+Current token: 	trace:
+		lexeme: ""
+		type:   ENDFILE
+
+Syntax tree:

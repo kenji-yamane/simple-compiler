@@ -1,0 +1,42 @@
+
+CMINUS COMPILATION: cases/gcd_sem_virgula.cm
+Syntax error at line 3: syntax error
+Current token: 	reserved word:
+		lexeme: "int"
+		type:   INT
+
+Syntax tree:
+fun int
+│ └─id: gcd
+│     └─if
+│         ├─op: ==
+│         │   ├─id: v
+│         │   └─const: 0
+│         ├─return
+│         │   └─id: u
+│         └─return
+│             └─id: gcd
+│                 └─id: v
+│                   op: -
+│                     ├─id: u
+│                     └─op: *
+│                         ├─op: /
+│                         │   ├─id: u
+│                         │   └─id: v
+│                         └─id: v
+fun void
+  └─id: main
+      └─var int
+        │ └─id: x
+        var int
+        │ └─id: y
+        assign
+        │ ├─id: x
+        │ └─id: input
+        assign
+        │ ├─id: y
+        │ └─id: input
+        id: output
+          └─id: gcd
+              └─id: x
+                id: y

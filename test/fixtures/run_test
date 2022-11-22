@@ -1,0 +1,13 @@
+#!/bin/bash
+
+[ -z "$1" ] && exit
+[ -z "$2" ] && exit
+
+regex="[^/]*\.\w{1,}"
+
+for file in "$1"/*
+do
+	var_out=$(echo $file | grep -oP "$regex")
+	 ./../../src/cminus "$file" > "$2"/"$var_out"
+
+done

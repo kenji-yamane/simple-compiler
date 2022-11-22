@@ -1,0 +1,34 @@
+
+CMINUS COMPILATION: cases/sort_declaring_reverved_word.cm
+Syntax error at line 7: syntax error
+Current token: 	reserved word:
+		lexeme: "int"
+		type:   INT
+Syntax error at line 20: syntax error
+Current token: 	reserved word:
+		lexeme: "return"
+		type:   RETURN
+
+Syntax tree:
+vec int
+│ ├─id: x
+│ └─const: 10
+fun int
+  └─id: minloc
+      └─if
+        │ ├─op: <
+        │ │   ├─id: a
+        │ │   │   └─id: i
+        │ │   └─id: x
+        │ └─assign
+        │   │ ├─id: x
+        │   │ └─id: a
+        │   │     └─id: i
+        │   assign
+        │     ├─id: k
+        │     └─id: i
+        assign
+          ├─id: i
+          └─op: +
+              ├─id: i
+              └─const: 1

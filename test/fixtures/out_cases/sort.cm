@@ -1,0 +1,142 @@
+
+CMINUS COMPILATION: cases/sort.cm
+
+Syntax tree:
+vec int
+│ ├─id: x
+│ └─const: 10
+fun int
+│ └─id: minloc
+│     ├─vec int
+│     │ │ └─id: a
+│     │ var int
+│     │ │ └─id: low
+│     │ var int
+│     │   └─id: high
+│     └─var int
+│       │ └─id: i
+│       var int
+│       │ └─id: x
+│       var int
+│       │ └─id: k
+│       assign
+│       │ ├─id: k
+│       │ └─id: low
+│       assign
+│       │ ├─id: x
+│       │ └─id: a
+│       │     └─id: low
+│       assign
+│       │ ├─id: i
+│       │ └─op: +
+│       │     ├─id: low
+│       │     └─const: 1
+│       while
+│       │ ├─op: <
+│       │ │   ├─id: i
+│       │ │   └─id: high
+│       │ └─if
+│       │   │ ├─op: <
+│       │   │ │   ├─id: a
+│       │   │ │   │   └─id: i
+│       │   │ │   └─id: x
+│       │   │ └─assign
+│       │   │   │ ├─id: x
+│       │   │   │ └─id: a
+│       │   │   │     └─id: i
+│       │   │   assign
+│       │   │     ├─id: k
+│       │   │     └─id: i
+│       │   assign
+│       │     ├─id: i
+│       │     └─op: +
+│       │         ├─id: i
+│       │         └─const: 1
+│       return
+│         └─id: k
+fun void
+│ └─id: sort
+│     ├─vec int
+│     │ │ └─id: a
+│     │ var int
+│     │ │ └─id: low
+│     │ var int
+│     │   └─id: high
+│     └─var int
+│       │ └─id: i
+│       var int
+│       │ └─id: k
+│       assign
+│       │ ├─id: i
+│       │ └─id: low
+│       while
+│         ├─op: <
+│         │   ├─id: i
+│         │   └─op: -
+│         │       ├─id: high
+│         │       └─const: 1
+│         └─var int
+│           │ └─id: t
+│           assign
+│           │ ├─id: k
+│           │ └─id: minloc
+│           │     └─id: a
+│           │       id: i
+│           │       id: high
+│           assign
+│           │ ├─id: t
+│           │ └─id: a
+│           │     └─id: k
+│           assign
+│           │ ├─id: a
+│           │ │   └─id: k
+│           │ └─id: a
+│           │     └─id: i
+│           assign
+│           │ ├─id: a
+│           │ │   └─id: i
+│           │ └─id: t
+│           assign
+│             ├─id: i
+│             └─op: +
+│                 ├─id: i
+│                 └─const: 1
+fun void
+  └─id: main
+      └─var int
+        │ └─id: i
+        assign
+        │ ├─id: i
+        │ └─const: 0
+        while
+        │ ├─op: <
+        │ │   ├─id: i
+        │ │   └─const: 10
+        │ └─assign
+        │   │ ├─id: x
+        │   │ │   └─id: i
+        │   │ └─id: input
+        │   assign
+        │     ├─id: i
+        │     └─op: +
+        │         ├─id: i
+        │         └─const: 1
+        id: sort
+        │ └─id: x
+        │   const: 0
+        │   const: 10
+        assign
+        │ ├─id: i
+        │ └─const: 0
+        while
+          ├─op: <
+          │   ├─id: i
+          │   └─const: 10
+          └─id: output
+            │ └─id: x
+            │     └─id: i
+            assign
+              ├─id: i
+              └─op: +
+                  ├─id: i
+                  └─const: 1
