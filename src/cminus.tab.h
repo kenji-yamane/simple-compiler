@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.5.1.  */
+/* A Bison parser, made by GNU Bison 3.8.2.  */
 
 /* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2020 Free Software Foundation,
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2021 Free Software Foundation,
    Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -31,11 +31,12 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-/* Undocumented macros, especially those whose name start with YY_,
-   are private implementation details.  Do not rely on them.  */
+/* DO NOT RELY ON FEATURES THAT ARE NOT DOCUMENTED in the manual,
+   especially those whose name start with YY_ or yy_.  They are
+   private implementation details that can be changed or removed.  */
 
-#ifndef YY_YY_CMINUS_TAB_H_INCLUDED
-#define YY_YY_CMINUS_TAB_H_INCLUDED
+#ifndef YY_YY_SRC_CMINUS_TAB_H_INCLUDED
+#define YY_YY_SRC_CMINUS_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
     #define YYDEBUG 0
@@ -44,41 +45,46 @@
 extern int yydebug;
 #endif
 
-/* Token type.  */
+/* Token kinds.  */
 #ifndef YYTOKENTYPE
     #define YYTOKENTYPE
 enum yytokentype {
-    ENDFILE = 258,
-    ERROR = 259,
-    IF = 260,
-    WHILE = 261,
-    INT = 262,
-    RETURN = 263,
-    VOID = 264,
-    ID = 265,
-    NUM = 266,
-    SEMI = 267,
-    COMMA = 268,
-    LPAREN = 269,
-    RPAREN = 270,
-    LBRACK = 271,
-    RBRACK = 272,
-    LBRACE = 273,
-    RBRACE = 274,
-    PLUS = 275,
-    MINUS = 276,
-    TIMES = 277,
-    OVER = 278,
-    LT = 279,
-    LTEQ = 280,
-    GTEQ = 281,
-    EQ = 282,
-    NEQ = 283,
-    GT = 284,
-    ASSIGN = 285,
-    LOWER_THAN_ELSE = 286,
-    ELSE = 287
+    YYEMPTY = -2,
+    YYEOF = 0,             /* "end of file"  */
+    YYerror = 256,         /* error  */
+    YYUNDEF = 257,         /* "invalid token"  */
+    ENDFILE = 258,         /* ENDFILE  */
+    ERROR = 259,           /* ERROR  */
+    IF = 260,              /* IF  */
+    WHILE = 261,           /* WHILE  */
+    INT = 262,             /* INT  */
+    RETURN = 263,          /* RETURN  */
+    VOID = 264,            /* VOID  */
+    ID = 265,              /* ID  */
+    NUM = 266,             /* NUM  */
+    SEMI = 267,            /* SEMI  */
+    COMMA = 268,           /* COMMA  */
+    LPAREN = 269,          /* LPAREN  */
+    RPAREN = 270,          /* RPAREN  */
+    LBRACK = 271,          /* LBRACK  */
+    RBRACK = 272,          /* RBRACK  */
+    LBRACE = 273,          /* LBRACE  */
+    RBRACE = 274,          /* RBRACE  */
+    PLUS = 275,            /* PLUS  */
+    MINUS = 276,           /* MINUS  */
+    TIMES = 277,           /* TIMES  */
+    OVER = 278,            /* OVER  */
+    LT = 279,              /* LT  */
+    LTEQ = 280,            /* LTEQ  */
+    GTEQ = 281,            /* GTEQ  */
+    EQ = 282,              /* EQ  */
+    NEQ = 283,             /* NEQ  */
+    GT = 284,              /* GT  */
+    ASSIGN = 285,          /* ASSIGN  */
+    LOWER_THAN_ELSE = 286, /* LOWER_THAN_ELSE  */
+    ELSE = 287             /* ELSE  */
 };
+typedef enum yytokentype yytoken_kind_t;
 #endif
 
 /* Value type.  */
@@ -92,4 +98,4 @@ extern YYSTYPE yylval;
 
 int yyparse(void);
 
-#endif /* !YY_YY_CMINUS_TAB_H_INCLUDED  */
+#endif /* !YY_YY_SRC_CMINUS_TAB_H_INCLUDED  */

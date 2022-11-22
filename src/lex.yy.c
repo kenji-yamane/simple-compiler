@@ -1,5 +1,6 @@
+#line 1 "src/lex.yy.c"
 
-#line 3 "lex.yy.c"
+#line 3 "src/lex.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -46,6 +47,7 @@ typedef int16_t flex_int16_t;
 typedef uint16_t flex_uint16_t;
 typedef int32_t flex_int32_t;
 typedef uint32_t flex_uint32_t;
+typedef uint64_t flex_uint64_t;
 #else
 typedef signed char flex_int8_t;
 typedef short int flex_int16_t;
@@ -154,7 +156,7 @@ typedef struct yy_buffer_state *YY_BUFFER_STATE;
 typedef size_t yy_size_t;
 #endif
 
-extern int yyleng;
+extern yy_size_t yyleng;
 
 extern FILE *yyin, *yyout;
 
@@ -197,7 +199,7 @@ struct yy_buffer_state
 	/* Number of characters read into yy_ch_buf, not including EOB
 	 * characters.
 	 */
-	int yy_n_chars;
+	yy_size_t yy_n_chars;
 
 	/* Whether we "own" the buffer - i.e., we know we created it,
 	 * and can realloc() it to grow it, and should free() it to
@@ -266,8 +268,8 @@ static YY_BUFFER_STATE * yy_buffer_stack = NULL; /**< Stack as an array. */
 
 /* yy_hold_char holds the character lost when yytext is formed. */
 static char yy_hold_char;
-static int yy_n_chars;		/* number of characters read into yy_ch_buf */
-int yyleng;
+static yy_size_t yy_n_chars;		/* number of characters read into yy_ch_buf */
+yy_size_t yyleng;
 
 /* Points to current character in buffer. */
 static char *yy_c_buf_p = NULL;
@@ -294,7 +296,7 @@ static void yy_init_buffer ( YY_BUFFER_STATE b, FILE *file  );
 
 YY_BUFFER_STATE yy_scan_buffer ( char *base, yy_size_t size  );
 YY_BUFFER_STATE yy_scan_string ( const char *yy_str  );
-YY_BUFFER_STATE yy_scan_bytes ( const char *bytes, int len  );
+YY_BUFFER_STATE yy_scan_bytes ( const char *bytes, yy_size_t len  );
 
 void *yyalloc ( yy_size_t  );
 void *yyrealloc ( void *, yy_size_t  );
@@ -347,7 +349,7 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
  */
 #define YY_DO_BEFORE_ACTION \
 	(yytext_ptr) = yy_bp; \
-	yyleng = (int) (yy_cp - yy_bp); \
+	yyleng = (yy_size_t) (yy_cp - yy_bp); \
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
@@ -474,8 +476,8 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "cminus.l"
-#line 2 "cminus.l"
+#line 1 "src/cminus.l"
+#line 2 "src/cminus.l"
 #include "globals.h"
 #include "util.h"
 #include "scan.h"
@@ -484,8 +486,8 @@ char tokenString[MAXTOKENLEN+1];
 char *identifierString;
 char *numberString;
 
-#line 488 "lex.yy.c"
-#line 489 "lex.yy.c"
+#line 489 "src/lex.yy.c"
+#line 490 "src/lex.yy.c"
 
 #define INITIAL 0
 
@@ -524,7 +526,7 @@ FILE *yyget_out ( void );
 
 void yyset_out  ( FILE * _out_str  );
 
-			int yyget_leng ( void );
+			yy_size_t yyget_leng ( void );
 
 char *yyget_text ( void );
 
@@ -593,7 +595,7 @@ static int input ( void );
 	if ( YY_CURRENT_BUFFER_LVALUE->yy_is_interactive ) \
 		{ \
 		int c = '*'; \
-		int n; \
+		yy_size_t n; \
 		for ( n = 0; n < max_size && \
 			     (c = getc( yyin )) != EOF && c != '\n'; ++n ) \
 			buf[n] = (char) c; \
@@ -702,9 +704,9 @@ YY_DECL
 		}
 
 	{
-#line 17 "cminus.l"
+#line 17 "src/cminus.l"
 
-#line 708 "lex.yy.c"
+#line 709 "src/lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -763,143 +765,143 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 18 "cminus.l"
+#line 18 "src/cminus.l"
 {return IF;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 19 "cminus.l"
+#line 19 "src/cminus.l"
 {return ELSE;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 20 "cminus.l"
+#line 20 "src/cminus.l"
 {return WHILE;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 21 "cminus.l"
+#line 21 "src/cminus.l"
 {return INT;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 22 "cminus.l"
+#line 22 "src/cminus.l"
 {return RETURN;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 23 "cminus.l"
+#line 23 "src/cminus.l"
 {return VOID;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 24 "cminus.l"
+#line 24 "src/cminus.l"
 {return PLUS;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 25 "cminus.l"
+#line 25 "src/cminus.l"
 {return MINUS;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 26 "cminus.l"
+#line 26 "src/cminus.l"
 {return TIMES;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 27 "cminus.l"
+#line 27 "src/cminus.l"
 {return OVER;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 28 "cminus.l"
+#line 28 "src/cminus.l"
 {return LT;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 29 "cminus.l"
+#line 29 "src/cminus.l"
 {return LTEQ;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 30 "cminus.l"
+#line 30 "src/cminus.l"
 {return GT;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 31 "cminus.l"
+#line 31 "src/cminus.l"
 {return GTEQ;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 32 "cminus.l"
+#line 32 "src/cminus.l"
 {return EQ;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 33 "cminus.l"
+#line 33 "src/cminus.l"
 {return NEQ;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 34 "cminus.l"
+#line 34 "src/cminus.l"
 {return ASSIGN;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 35 "cminus.l"
+#line 35 "src/cminus.l"
 {return SEMI;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 36 "cminus.l"
+#line 36 "src/cminus.l"
 {return COMMA;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 37 "cminus.l"
+#line 37 "src/cminus.l"
 {return LPAREN;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 38 "cminus.l"
+#line 38 "src/cminus.l"
 {return RPAREN;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 39 "cminus.l"
+#line 39 "src/cminus.l"
 {return LBRACK;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 40 "cminus.l"
+#line 40 "src/cminus.l"
 {return RBRACK;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 41 "cminus.l"
+#line 41 "src/cminus.l"
 {return LBRACE;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 42 "cminus.l"
+#line 42 "src/cminus.l"
 {return RBRACE;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 43 "cminus.l"
+#line 43 "src/cminus.l"
 { numberString = copyString(yytext);return NUM;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 44 "cminus.l"
+#line 44 "src/cminus.l"
 { identifierString = copyString(yytext); return ID;}
 	YY_BREAK
 case 28:
 /* rule 28 can match eol */
 YY_RULE_SETUP
-#line 45 "cminus.l"
+#line 45 "src/cminus.l"
 {
 					lineno++;
 					if (TraceScan) {
@@ -909,12 +911,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 51 "cminus.l"
+#line 51 "src/cminus.l"
 {/* skip whitespace */}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 52 "cminus.l"
+#line 52 "src/cminus.l"
 {
 					char c = 'a', last;
 					do {
@@ -929,15 +931,15 @@ YY_RULE_SETUP
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 63 "cminus.l"
+#line 63 "src/cminus.l"
 {return ERROR;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 64 "cminus.l"
+#line 64 "src/cminus.l"
 ECHO;
 	YY_BREAK
-#line 941 "lex.yy.c"
+#line 942 "src/lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1124,7 +1126,7 @@ static int yy_get_next_buffer (void)
 
 	else
 		{
-			int num_to_read =
+			yy_size_t num_to_read =
 			YY_CURRENT_BUFFER_LVALUE->yy_buf_size - number_to_move - 1;
 
 		while ( num_to_read <= 0 )
@@ -1138,7 +1140,7 @@ static int yy_get_next_buffer (void)
 
 			if ( b->yy_is_our_buffer )
 				{
-				int new_size = b->yy_buf_size * 2;
+				yy_size_t new_size = b->yy_buf_size * 2;
 
 				if ( new_size <= 0 )
 					b->yy_buf_size += b->yy_buf_size / 8;
@@ -1196,7 +1198,7 @@ static int yy_get_next_buffer (void)
 
 	if (((yy_n_chars) + number_to_move) > YY_CURRENT_BUFFER_LVALUE->yy_buf_size) {
 		/* Extend the array by 50%, plus the number we really need. */
-		int new_size = (yy_n_chars) + number_to_move + ((yy_n_chars) >> 1);
+		yy_size_t new_size = (yy_n_chars) + number_to_move + ((yy_n_chars) >> 1);
 		YY_CURRENT_BUFFER_LVALUE->yy_ch_buf = (char *) yyrealloc(
 			(void *) YY_CURRENT_BUFFER_LVALUE->yy_ch_buf, (yy_size_t) new_size  );
 		if ( ! YY_CURRENT_BUFFER_LVALUE->yy_ch_buf )
@@ -1285,7 +1287,7 @@ static int yy_get_next_buffer (void)
 	if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
 		{ /* need to shift things up to make room */
 		/* +2 for EOB chars. */
-		int number_to_move = (yy_n_chars) + 2;
+		yy_size_t number_to_move = (yy_n_chars) + 2;
 		char *dest = &YY_CURRENT_BUFFER_LVALUE->yy_ch_buf[
 					YY_CURRENT_BUFFER_LVALUE->yy_buf_size + 2];
 		char *source =
@@ -1336,7 +1338,7 @@ static int yy_get_next_buffer (void)
 
 		else
 			{ /* need more input */
-			int offset = (int) ((yy_c_buf_p) - (yytext_ptr));
+			yy_size_t offset = (yy_c_buf_p) - (yytext_ptr);
 			++(yy_c_buf_p);
 
 			switch ( yy_get_next_buffer(  ) )
@@ -1705,12 +1707,12 @@ YY_BUFFER_STATE yy_scan_string (const char * yystr )
  * 
  * @return the newly allocated buffer state object.
  */
-YY_BUFFER_STATE yy_scan_bytes  (const char * yybytes, int  _yybytes_len )
+YY_BUFFER_STATE yy_scan_bytes  (const char * yybytes, yy_size_t  _yybytes_len )
 {
 	YY_BUFFER_STATE b;
 	char *buf;
 	yy_size_t n;
-	int i;
+	yy_size_t i;
     
 	/* Get memory for full buffer, including space for trailing EOB's. */
 	n = (yy_size_t) (_yybytes_len + 2);
@@ -1752,7 +1754,7 @@ static void yynoreturn yy_fatal_error (const char* msg )
 	do \
 		{ \
 		/* Undo effects of setting up yytext. */ \
-        int yyless_macro_arg = (n); \
+        yy_size_t yyless_macro_arg = (n); \
         YY_LESS_LINENO(yyless_macro_arg);\
 		yytext[yyleng] = (yy_hold_char); \
 		(yy_c_buf_p) = yytext + yyless_macro_arg; \
@@ -1792,7 +1794,7 @@ FILE *yyget_out  (void)
 /** Get the length of the current token.
  * 
  */
-int yyget_leng  (void)
+yy_size_t yyget_leng  (void)
 {
         return yyleng;
 }
@@ -1942,7 +1944,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 64 "cminus.l"
+#line 64 "src/cminus.l"
 
 TokenType getToken(void) {
     static int firstTime = TRUE;

@@ -1,6 +1,6 @@
 CC      := gcc
 
-CFLAGS := -ll
+CFLAGS := -ll -ly
 OS     := $(shell uname -s)
 ARCH   := $(shell uname -m)
 ifeq ($(OS),Linux)
@@ -14,6 +14,8 @@ BUILD   := ./build
 OBJ_DIR := $(BUILD)/objects
 APP_DIR := $(BUILD)
 FLX_SRC := lex.yy.c
+BSN_SRC := cminus.tab.c
+WARNING := -w
 
 TEST_DIR         := ./test
 FIXTURES_DIR     := $(TEST_DIR)/fixtures
@@ -21,6 +23,7 @@ LEXICAL_TEST_DIR := $(TEST_DIR)/lexical
 
 SRC := $(shell ls $(SRC_DIR)/*.c)
 FLX := $(shell ls $(SRC_DIR)/*.l)
+BSN := $(shell ls $(SRC_DIR)/*.y)
 OBJ := $(SRC:%.c=$(OBJ_DIR)/%.o)
 DEP := $(OBJ:.o=.d)
 
@@ -30,7 +33,7 @@ $(APP_DIR)/$(COMPILER): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 $(OBJ_DIR)/%.o:%.c
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -MMD -o $@
+	$(CC) $(CFLAGS) $(WARNING) $(INCLUDE) -c $< -MMD -o $@
 
 LEXICAL_TEST := lexical-test
 LEXICAL_SRC  := $(filter-out $(SRC_DIR)/main.c,$(SRC))
@@ -40,9 +43,9 @@ $(APP_DIR)/$(LEXICAL_TEST): $(LEXICAL_OBJ)
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -o $@ $^
 
-.PHONY: all build format check-lexical clean flex info
+.PHONY: all build format check-lexical clean flex bison info
 
-all: format flex build $(APP_DIR)/$(COMPILER) $(APP_DIR)/$(LEXICAL_TEST)
+all: bison flex format build $(APP_DIR)/$(COMPILER)
 
 build:
 	@mkdir -p $(BUILD)
@@ -68,11 +71,7 @@ flex:
 	flex -o $(SRC_DIR)/$(FLX_SRC) $(FLX)
 
 bison:
-	# bison -d src/cminus.y -o src/cminus.tab.c
-	# flex src/cminus.l
-	# gcc -c *.c
-	# gcc -o tiny *.o -ly -lfl
-
+	bison -d $(BSN) -o $(SRC_DIR)/$(BSN_SRC)
 
 info: flex
 	@echo "[*] Sources:      $(SRC) "
