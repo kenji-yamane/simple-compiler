@@ -64,5 +64,5 @@ build
 .vscode
 
 # Compilers
-tiny
 cminus
+compiler

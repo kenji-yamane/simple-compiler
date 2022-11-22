@@ -1,6 +1,6 @@
 /****************************************************/
-/* File: tiny.y                                     */
-/* The TINY Yacc/Bison specification file           */
+/* File: cminus.y                                   */
+/* The C- Yacc/Bison specification file             */
 /* Compiler Construction: Principles and Practice   */
 /* Kenneth C. Louden                                */
 /****************************************************/
@@ -424,7 +424,7 @@ int yyerror(char * message) {
 }
 
 /* yylex calls getToken to make Yacc/Bison output
- * compatible with ealier versions of the TINY scanner
+ * compatible with ealier versions of the C- scanner
  */
 static int yylex(void) {
     return getToken();

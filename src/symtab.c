@@ -1,6 +1,6 @@
 /****************************************************/
 /* File: symtab.c                                   */
-/* Symbol table implementation for the TINY compiler*/
+/* Symbol table implementation for the C- compiler  */
 /* (allows only one symbol table)                   */
 /* Symbol table is implemented as a chained         */
 /* hash table                                       */

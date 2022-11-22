@@ -1996,7 +1996,7 @@ int yyerror(char *message) {
 }
 
 /* yylex calls getToken to make Yacc/Bison output
- * compatible with ealier versions of the TINY scanner
+ * compatible with ealier versions of the C- scanner
  */
 static int yylex(void) { return getToken(); }
 
