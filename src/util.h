@@ -56,4 +56,6 @@ stack push(stack s, void *val);
 void *front(stack s);
 stack pop(stack s);
 
+void echoSorce();
+
 #endif

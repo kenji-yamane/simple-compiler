@@ -66,7 +66,7 @@ static void checkNode(TreeNode *t, int scope) {
                 break;
             }
             t->type = lookup->type;
-            if (paramCount(t) != lookup->params && lookup->type == FunK) {
+            if (paramCount(t) != lookup->params && lookup->kind == FunK) {
                 char message[100] = "";
                 sprintf(message,
                         "parameter counting mismatch (expected %d, found %d)",
@@ -103,10 +103,15 @@ static void checkNode(TreeNode *t, int scope) {
             break;
         case VecK:
         case VarK:
-            if (lookup != NULL &&
-                lookup->scope ==
-                    scope) // This means we *can* "shadow" outer scope
+            // This means we *can* "shadow" outer scope
+            if (lookup != NULL && lookup->scope == scope)
                 semanticError(t, name, "invalid redeclaration of variable");
+
+            // But just in some cases
+            if (lookup != NULL && lookup->kind == FunK)
+                semanticError(t, name,
+                              "variable shadows function from outer scope");
+
             if (t->type == Void)
                 semanticError(t, name, "invalid declaration for variable");
             break;

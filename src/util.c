@@ -383,3 +383,17 @@ stack pop(stack s) {
     free(head);
     return s;
 }
+
+void echoSorce() {
+    char c[2];
+    int lineno = 1;
+
+    fprintf(listing, "  1| ");
+    while (fgets(c, 2, source)) {
+        fprintf(listing, "%c", c[0]);
+        if (c[0] == '\n')
+            fprintf(listing, "%3d| ", ++lineno);
+    }
+    fprintf(listing, "\n");
+    rewind(source);
+}

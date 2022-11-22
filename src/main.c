@@ -30,7 +30,7 @@ FILE *listing;
 FILE *code;
 
 /* allocate and set tracing flags */
-int EchoSource = FALSE;
+int EchoSource = TRUE;
 int TraceScan = FALSE;
 int TraceParse = TRUE;
 int TraceAnalyze = TRUE;
@@ -53,8 +53,15 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "File %s not found\n", pgm);
         exit(1);
     }
+
     listing = stdout; /* send listing to screen */
+
+    if (EchoSource) {
+        fprintf(listing, "\nCode:\n");
+        echoSorce();
+    }
     fprintf(listing, "\nCMINUS COMPILATION: %s\n", pgm);
+
 #if NO_PARSE
     while (getToken() != ENDFILE)
         ;
