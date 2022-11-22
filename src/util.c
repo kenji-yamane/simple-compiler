@@ -361,6 +361,126 @@ void printTree(TreeNode *tree) {
     UNINDENT;
 }
 
+
+enum indentKinds { spaceIndent, vebarIndent, tIndent, lIndent };
+
+enum indentKinds indent[100] = { spaceIndent };
+int size = 0;
+
+void printNode(TreeNode *node) {
+    if (node->nodekind == StmtK) {
+        switch (node->kind.stmt) {
+        case IfK:
+            fprintf(listing, "if\n");
+            break;
+        case RepeatK:
+            fprintf(listing, "while\n");
+            break;
+        case AssignK:
+            fprintf(listing, "=\n");
+            break;
+        case ReturnK:
+            fprintf(listing, "return\n");
+            break;
+        default:
+            fprintf(listing, "Unknown StmtNode kind\n");
+            break;
+        }
+    } else if (node->nodekind == ExpK) {
+        switch (node->kind.exp) {
+        case OpK:
+            fprintf(listing, "Op: ");
+            printOp(node->attr.op);
+            break;
+        case ConstK:
+            fprintf(listing, "Const: %d\n", node->attr.val);
+            break;
+        case IdK:
+            fprintf(listing, "Id: %s\n", node->attr.name);
+            break;
+        default:
+            fprintf(listing, "Unknown ExpNode kind\n");
+            break;
+        }
+    } else if (node->nodekind == DeclK) {
+        switch (node->kind.decl) {
+        case VarK:
+            fprintf(listing, "Decl: var ");
+            break;
+        case VecK:
+            fprintf(listing, "Decl: vec ");
+            break;
+        case FunK:
+            fprintf(listing, "Decl: fun ");
+            break;
+        default:
+            fprintf(listing, "Unknown DeclNode kind\n");
+            break;
+        }
+        switch (node->type) {
+        case Integer:
+            fprintf(listing, "int\n");
+            break;
+        case Void:
+            fprintf(listing, "void\n");
+            break;
+        case Boolean:
+            fprintf(listing, "boolean\n");
+            break;
+        default:
+            fprintf(listing, "Unknown DeclNode type\n");
+            break;
+        }
+    } else
+        fprintf(listing, "Unknown node kind\n");
+}
+
+void printStyleSpaces() {
+    for (int i=0; i < size; i++)
+    switch(indent[i]) {
+        case spaceIndent: fprintf(listing, "  "); break;
+        case vebarIndent: fprintf(listing, "│ "); break;
+        case tIndent: fprintf(listing, "├─"); break;
+        case lIndent: fprintf(listing, "└─"); break;
+    }
+}
+
+void printStyleTree(TreeNode *tree) {
+    while (tree != NULL) {
+        // fprintf(listing, "&");
+        printStyleSpaces();
+        printNode(tree);
+        
+        if (size > 0 && indent[size-1] == tIndent)
+            indent[size-1] = vebarIndent;
+
+        if (size > 0 && indent[size-1] == lIndent)
+            indent[size-1] = spaceIndent;
+
+
+        if (tree->sibling == NULL)
+            indent[size++] = spaceIndent;
+        else
+            indent[size++] = vebarIndent;    
+
+        size++;
+        for (int i = 0; i < MAXCHILDREN; i++) {
+            if (tree->child[i+1] == NULL)
+                indent[size-1] = lIndent; 
+            else
+                indent[size-1] = tIndent; 
+
+            
+            printStyleTree(tree->child[i]);
+        }
+        size--;
+        
+        tree = tree->sibling;
+        size--;
+    }
+}
+
+
 stack push(stack s, void *val) {
     struct node *n = malloc(sizeof(struct node));
     n->val = val;
