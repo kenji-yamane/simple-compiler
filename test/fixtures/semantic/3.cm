@@ -1,0 +1,8 @@
+/* void variable */
+
+int b;
+
+void main (void) {
+    void a;
+    b = 5;
+}

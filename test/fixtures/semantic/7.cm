@@ -1,0 +1,16 @@
+/* inner variable scope shadows outer function */
+
+int funUm(void) {
+    int a; a = 3;
+    return a;
+}
+
+int xyz(int i) {
+    return 4;
+}
+
+void main (void) {
+    int b;
+    int xyz;
+    xyz = 4 - b;
+}

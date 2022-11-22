@@ -1,0 +1,17 @@
+/* no main func */
+
+int x; int y[10];
+
+void funcUm(void) {
+    int a; a=2;
+}
+
+int funcDois(int i) {
+    i = 5;
+    return;
+} 
+
+int funcTres(int j, int k) {
+    k = 3 * funcDois(j);
+    return k;
+}

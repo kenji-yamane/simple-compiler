@@ -1,0 +1,22 @@
+/* no declaration of function */
+
+int funcUm(void) {
+    int a; a=2;
+}
+
+int funcDois(int i) {
+    i = 5;
+} 
+
+int funcDois(int j) {
+    j = 5;
+} 
+
+
+void main (void) {
+    int b; int c;
+    c = 4;
+    b = funcDois();
+    c = funcTres();
+
+}

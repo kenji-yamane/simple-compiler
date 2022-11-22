@@ -1,0 +1,13 @@
+/* Function returns void */
+
+void exemplo(void) {
+    int i;
+    i = 2*4;
+    return;
+}
+
+void main(void) {
+    int a;
+    a = exemplo();
+    a = 2;
+}

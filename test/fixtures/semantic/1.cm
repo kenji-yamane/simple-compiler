@@ -1,0 +1,11 @@
+/* Non declared variable */
+
+void exemplo(void) {
+    int a; a = 0;
+    b = a;
+}
+
+int main (void) {
+    int c;
+    c = 3;
+}
