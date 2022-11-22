@@ -43,8 +43,6 @@ char *copyString(char *);
  */
 void printTree(TreeNode *);
 
-void printStyleTree(TreeNode *);
-
 /* Stack abstraction
  */
 struct node {

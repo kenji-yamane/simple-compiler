@@ -65,7 +65,7 @@ typedef enum { OpK, ConstK, IdK } ExpKind;
 typedef enum { VarK, VecK, FunK } DeclKind;
 
 /* ExpType is used for type checking */
-typedef enum { Void, Integer, Boolean } ExpType;
+typedef enum { Void, Integer } ExpType;
 
 #define MAXCHILDREN 3
 

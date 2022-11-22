@@ -382,15 +382,13 @@ ativacao
         } 
       LPAREN args RPAREN
         {
-            printf("1\n");
             $$ = newExpNode(IdK);
             $$->child[0] = $4;
             $$->attr.name = front(savedName);
             $$->lineno = (int) front(savedLine);
-            printf("2\n");
+            
             savedName = pop(savedName);
             savedLine = pop(savedLine);
-            printf("3\n");
         }
     ;
 

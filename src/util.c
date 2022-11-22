@@ -274,99 +274,13 @@ static int indentno = 0;
 #define INDENT indentno += 2
 #define UNINDENT indentno -= 2
 
-/* printSpaces indents by printing spaces */
-static void printSpaces(void) {
-    int i;
-    for (i = 0; i < indentno; i++)
-        fprintf(listing, " ");
-}
-
-/* procedure printTree prints a syntax tree to the
- * listing file using indentation to indicate subtrees
- */
-void printTree(TreeNode *tree) {
-    int i;
-    INDENT;
-    while (tree != NULL) {
-        printSpaces();
-        if (tree->nodekind == StmtK) {
-            switch (tree->kind.stmt) {
-            case IfK:
-                fprintf(listing, "if\n");
-                break;
-            case RepeatK:
-                fprintf(listing, "while\n");
-                break;
-            case AssignK:
-                fprintf(listing, "=\n");
-                break;
-            case ReturnK:
-                fprintf(listing, "return\n");
-                break;
-            default:
-                fprintf(listing, "Unknown StmtNode kind\n");
-                break;
-            }
-        } else if (tree->nodekind == ExpK) {
-            switch (tree->kind.exp) {
-            case OpK:
-                fprintf(listing, "Op: ");
-                printOp(tree->attr.op);
-                break;
-            case ConstK:
-                fprintf(listing, "Const: %d\n", tree->attr.val);
-                break;
-            case IdK:
-                fprintf(listing, "Id: %s\n", tree->attr.name);
-                break;
-            default:
-                fprintf(listing, "Unknown ExpNode kind\n");
-                break;
-            }
-        } else if (tree->nodekind == DeclK) {
-            switch (tree->kind.decl) {
-            case VarK:
-                fprintf(listing, "Decl: var ");
-                break;
-            case VecK:
-                fprintf(listing, "Decl: vec ");
-                break;
-            case FunK:
-                fprintf(listing, "Decl: fun ");
-                break;
-            default:
-                fprintf(listing, "Unknown DeclNode kind\n");
-                break;
-            }
-            switch (tree->type) {
-            case Integer:
-                fprintf(listing, "int\n");
-                break;
-            case Void:
-                fprintf(listing, "void\n");
-                break;
-            case Boolean:
-                fprintf(listing, "boolean\n");
-                break;
-            default:
-                fprintf(listing, "Unknown DeclNode type\n");
-                break;
-            }
-        } else
-            fprintf(listing, "Unknown node kind\n");
-        for (i = 0; i < MAXCHILDREN; i++)
-            printTree(tree->child[i]);
-        tree = tree->sibling;
-    }
-    UNINDENT;
-}
-
 
 enum indentKinds { spaceIndent, vebarIndent, tIndent, lIndent };
 
 enum indentKinds indent[100] = { spaceIndent };
 int size = 0;
 
+/* printNode prints the node text */
 void printNode(TreeNode *node) {
     if (node->nodekind == StmtK) {
         switch (node->kind.stmt) {
@@ -377,44 +291,44 @@ void printNode(TreeNode *node) {
             fprintf(listing, "while\n");
             break;
         case AssignK:
-            fprintf(listing, "=\n");
+            fprintf(listing, "assign\n");
             break;
         case ReturnK:
             fprintf(listing, "return\n");
             break;
         default:
-            fprintf(listing, "Unknown StmtNode kind\n");
+            fprintf(listing, "unknown StmtNode kind\n");
             break;
         }
     } else if (node->nodekind == ExpK) {
         switch (node->kind.exp) {
         case OpK:
-            fprintf(listing, "Op: ");
+            fprintf(listing, "op: ");
             printOp(node->attr.op);
             break;
         case ConstK:
-            fprintf(listing, "Const: %d\n", node->attr.val);
+            fprintf(listing, "const: %d\n", node->attr.val);
             break;
         case IdK:
-            fprintf(listing, "Id: %s\n", node->attr.name);
+            fprintf(listing, "id: %s\n", node->attr.name);
             break;
         default:
-            fprintf(listing, "Unknown ExpNode kind\n");
+            fprintf(listing, "unknown ExpNode kind\n");
             break;
         }
     } else if (node->nodekind == DeclK) {
         switch (node->kind.decl) {
         case VarK:
-            fprintf(listing, "Decl: var ");
+            fprintf(listing, "var ");
             break;
         case VecK:
-            fprintf(listing, "Decl: vec ");
+            fprintf(listing, "vec ");
             break;
         case FunK:
-            fprintf(listing, "Decl: fun ");
+            fprintf(listing, "fun ");
             break;
         default:
-            fprintf(listing, "Unknown DeclNode kind\n");
+            fprintf(listing, "unknown DeclNode kind");
             break;
         }
         switch (node->type) {
@@ -424,18 +338,16 @@ void printNode(TreeNode *node) {
         case Void:
             fprintf(listing, "void\n");
             break;
-        case Boolean:
-            fprintf(listing, "boolean\n");
-            break;
         default:
-            fprintf(listing, "Unknown DeclNode type\n");
+            fprintf(listing, "unknown DeclNode type\n");
             break;
         }
     } else
-        fprintf(listing, "Unknown node kind\n");
+        fprintf(listing, "unknown node kind\n");
 }
 
-void printStyleSpaces() {
+/* printSpaces indents by printing spaces */
+void printSpaces() {
     for (int i=0; i < size; i++)
     switch(indent[i]) {
         case spaceIndent: fprintf(listing, "  "); break;
@@ -445,10 +357,12 @@ void printStyleSpaces() {
     }
 }
 
-void printStyleTree(TreeNode *tree) {
+/* procedure printTree prints a syntax tree to the
+ * listing file using indentation to indicate subtrees
+ */
+void printTree(TreeNode *tree) {
     while (tree != NULL) {
-        // fprintf(listing, "&");
-        printStyleSpaces();
+        printSpaces();
         printNode(tree);
         
         if (size > 0 && indent[size-1] == tIndent)
@@ -471,10 +385,10 @@ void printStyleTree(TreeNode *tree) {
                 indent[size-1] = tIndent; 
 
             
-            printStyleTree(tree->child[i]);
+            printTree(tree->child[i]);
         }
         size--;
-        
+
         tree = tree->sibling;
         size--;
     }

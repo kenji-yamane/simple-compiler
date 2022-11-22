@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
     listing = stdout; /* send listing to screen */
-    fprintf(listing, "\nTINY COMPILATION: %s\n", pgm);
+    fprintf(listing, "\nCMINUS COMPILATION: %s\n", pgm);
 #if NO_PARSE
     while (getToken() != ENDFILE)
         ;
@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
     syntaxTree = parse();
     if (TraceParse) {
         fprintf(listing, "\nSyntax tree:\n");
-        printStyleTree(syntaxTree);
+        printTree(syntaxTree);
     }
     #if !NO_ANALYZE
     if (!Error) {
