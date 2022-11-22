@@ -21,7 +21,6 @@
 
 /* the hash function */
 static int hash(char *key) {
-    // printf(">>>> key: %s\n", key);
     int temp = 0;
     int i = 0;
     while (key[i] != '\0') {
@@ -35,14 +34,15 @@ bool equalRecs(BucketListRec *l, char *name, int scope) {
     if (strcmp(l->name, name) != 0) {
         return false;
     }
-    if (l->scope != scope) {
+    if (l->scope >
+        scope) { // This means that lower scopes can appear in higher scopes
         return false;
     }
     return true;
 }
 
 /* the hash table */
-static BucketList hashTable[SIZE];
+static BucketList hashTable[SIZE] = {};
 
 /* Procedure st_insert inserts an identifier
  * into the symbol table. If the identifier
@@ -51,13 +51,12 @@ static BucketList hashTable[SIZE];
  */
 BucketListRec *st_insert(char *name, int lineno, int scope, ExpType type,
                          DeclKind kind, int params) {
-    // printf("!\n");
     int h = hash(name);
-    // printf(")\n");
+
     BucketList l = hashTable[h];
     while (l != NULL && !equalRecs(l, name, scope))
         l = l->next;
-    // printf("#\n");
+
     if (l != NULL) { /* found in table, so just add line number */
         LineListRec *t = l->lines;
         while (t->next != NULL)
@@ -66,7 +65,7 @@ BucketListRec *st_insert(char *name, int lineno, int scope, ExpType type,
         t->next->lineno = lineno;
         t->next->next = NULL;
     }
-    // printf("&\n");
+
     /* variable not yet in table, so we'll add it */
     l = (BucketListRec *)malloc(sizeof(BucketListRec));
     l->name = name;
@@ -79,7 +78,6 @@ BucketListRec *st_insert(char *name, int lineno, int scope, ExpType type,
     l->lines->next = NULL;
     l->next = hashTable[h];
     hashTable[h] = l;
-    // printf("@\n");
     return l;
 } /* st_insert */
 
@@ -87,12 +85,11 @@ BucketListRec *st_insert(char *name, int lineno, int scope, ExpType type,
  * already exists in the table
  */
 BucketList st_lookup(char *name, int scope) {
-    // printf("> lookup: %s\n", name);
     int h = hash(name);
     BucketList l = hashTable[h];
     while ((l != NULL) && !equalRecs(l, name, scope))
         l = l->next;
-    // printf("ok! %d\n", (int) l);
+
     return l;
 }
 
@@ -101,9 +98,10 @@ BucketList st_lookup(char *name, int scope) {
  */
 void st_remove(int scope) {
     for (int i = 0; i < SIZE; i++) {
-        BucketList l = hashTable[i], head = l;
+        BucketList l = hashTable[i];
         while (l != NULL && l->scope == scope) {
             l = removeHead(l);
+            hashTable[i] = l;
         }
         while (l != NULL && l->next != NULL) {
             if (l->next->scope == scope) {
@@ -154,14 +152,15 @@ void freeRec(BucketListRec *l) {
  */
 void printSymTab(FILE *listing) {
     int i;
-    fprintf(listing, "Variable Name   Line Numbers\n");
-    fprintf(listing, "-------------   ------------\n");
+    fprintf(listing, "Variable Name   Scope   Line Numbers\n");
+    fprintf(listing, "-------------   -----   ------------\n");
     for (i = 0; i < SIZE; ++i) {
         if (hashTable[i] != NULL) {
             BucketList l = hashTable[i];
             while (l != NULL) {
                 LineList t = l->lines;
-                fprintf(listing, "%-14s ", l->name);
+                fprintf(listing, "%-17s ", l->name);
+                fprintf(listing, "%-4d ", l->scope);
                 while (t != NULL) {
                     fprintf(listing, "%4d ", t->lineno);
                     t = t->next;
