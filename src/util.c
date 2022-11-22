@@ -51,7 +51,7 @@ void printToken(TokenType token, const char *tokenString) {
         fprintf(listing, "\tunknown:        %d\n", token);
     }
     fprintf(listing, "\t\tlexeme: \"%s\"\n", tokenString);
-    fprintf(listing, "\t\ttype:   %s\n", tokenTypeToString(token));
+    fprintf(listing, "\t\ttype:   %s (%d)\n", tokenTypeToString(token), token);
 }
 
 void printOp(TokenType token) {

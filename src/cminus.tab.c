@@ -1996,6 +1996,9 @@ int yyerror(char *message) {
         fprintf(listing, "Syntax error for '%s' at line %d: %s\n",
                 tokenTypeToString(yychar), lineno, message);
     }
+
+    /* printToken(yychar, tokenString); */
+
     Error = TRUE;
     return 0;
 }

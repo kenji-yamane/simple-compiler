@@ -33,7 +33,6 @@
      * and not included in the tab.h file
      */
 #endif
-
 #define ENDFILE 0
 
 #ifndef FALSE

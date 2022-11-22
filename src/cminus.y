@@ -423,6 +423,7 @@ int yyerror(char * message) {
     else {
         fprintf(listing,"Syntax error for '%s' at line %d: %s\n", tokenTypeToString(yychar), lineno, message);
     }
+    
     Error = TRUE;
     return 0;
 }

@@ -50,7 +50,7 @@ static BucketList hashTable[SIZE];
  * adds a new line
  */
 BucketListRec *st_insert(char *name, int lineno, int scope, ExpType type,
-                         DeclKind kind) {
+                         DeclKind kind, int params) {
     // printf("!\n");
     int h = hash(name);
     // printf(")\n");
@@ -75,6 +75,7 @@ BucketListRec *st_insert(char *name, int lineno, int scope, ExpType type,
     l->type = type;
     l->scope = scope;
     l->kind = kind;
+    l->params = params;
     l->lines->next = NULL;
     l->next = hashTable[h];
     hashTable[h] = l;

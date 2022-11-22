@@ -24,6 +24,16 @@ static void semanticError(TreeNode *t, char *name, char *message) {
     Error = TRUE;
 }
 
+static int paramCount(TreeNode *t) {
+    if (t->nodekind != ExpK && t->kind.exp != IdK)
+        return 0;
+
+    int count = 0;
+    for (TreeNode *param = t->child[0]; param != NULL; param = param->sibling)
+        count++;
+    return count;
+}
+
 /* Procedure checkNode performs
  * type checking at a single tree node
  */
@@ -31,10 +41,7 @@ static void checkNode(TreeNode *t, int scope) {
     TreeNode *l = t->child[0];
     TreeNode *r = t->child[1];
     BucketList lookup;
-    bool isFunc;
-
-    // printf("node: ");
-    // printNode(t);
+    char *name;
 
     switch (t->nodekind) {
     case ExpK:
@@ -56,8 +63,16 @@ static void checkNode(TreeNode *t, int scope) {
                               "name was not declared in current scope");
                 t->type = Integer; // conferir se tem que setar para inteiro ou
                                    // deixar void...
-            } else
-                t->type = lookup->type;
+                break;
+            }
+            t->type = lookup->type;
+            if (paramCount(t) != lookup->params) {
+                char message[100] = "";
+                sprintf(message,
+                        "parameter counting mismatch (expected %d, found %d)",
+                        lookup->params, paramCount(t));
+                semanticError(t, t->attr.name, message);
+            }
             break;
         }
         break;
@@ -67,9 +82,10 @@ static void checkNode(TreeNode *t, int scope) {
             break;
         case AssignK:
             if (l->type != Integer)
-                semanticError(l, "FIXME", "FIXME");
+                semanticError(l, "FIXME1", "FIXME");
             if (r->type != Integer)
-                semanticError(r, "FIXME", "assignment of non-integer value");
+                semanticError(r, l->attr.name,
+                              "assignment of non-integer value to variable");
             t->type = Integer;
             break;
         case RepeatK:
@@ -78,16 +94,18 @@ static void checkNode(TreeNode *t, int scope) {
         }
         break;
     case DeclK:
+        name = l->attr.name;
         switch (t->kind.decl) {
         case FunK:
-            isFunc = true;
-            if (st_lookup(l->attr.name, scope) != NULL)
-                semanticError(t, l->attr.name, "redeclaration of function");
+            if (st_lookup(name, scope) != NULL)
+                semanticError(t, name, "invalid redeclaration of function");
             break;
         case VecK:
         case VarK:
-            if (st_lookup(l->attr.name, scope) != NULL)
-                semanticError(t, l->attr.name, "redeclaration of variable");
+            if (st_lookup(name, scope) != NULL)
+                semanticError(t, name, "invalid redeclaration of variable");
+            if (t->type == Void)
+                semanticError(t, name, "invalid declaration for variable");
             break;
         }
         break;
@@ -100,8 +118,11 @@ void analyzeNode(TreeNode *syntaxTree, int scope) {
     while (syntaxTree != NULL) {
         if (syntaxTree->nodekind == DeclK) {
             checkNode(syntaxTree, scope);
+
+            // We should count the param number
+            int count = paramCount(syntaxTree->child[0]);
             st_insert(syntaxTree->child[0]->attr.name, syntaxTree->lineno,
-                      scope, syntaxTree->type, syntaxTree->kind.decl);
+                      scope, syntaxTree->type, syntaxTree->kind.decl, count);
 
             for (int i = 0; i < MAXCHILDREN; i++) {
                 child = syntaxTree->child[0]->child[i];
@@ -123,9 +144,28 @@ void analyzeNode(TreeNode *syntaxTree, int scope) {
     }
 }
 
-void analyze(TreeNode *syntaxTree) {
-    st_insert("input", 0, 0, Integer, FunK);
-    st_insert("output", 0, 0, Void, FunK);
+void analyzeMain(TreeNode *syntaxTree) {
+    while (syntaxTree->sibling != NULL)
+        syntaxTree = syntaxTree->sibling;
 
-    return analyzeNode(syntaxTree, 0);
+    TreeNode *func = syntaxTree->child[0];
+
+    if (strcmp(func->attr.name, "main") != 0)
+        semanticError(func, "main", "last declaration is not main");
+    else {
+        if (paramCount(func) > 0)
+            semanticError(func, "main", "main should not have parameters");
+        if (syntaxTree->type != Void)
+            semanticError(func, "main", "main should return void");
+    }
+}
+
+void analyze(TreeNode *syntaxTree) {
+    st_insert("input", 0, 0, Integer, FunK, 0);
+    st_insert("output", 0, 0, Void, FunK, 1);
+
+    analyzeNode(syntaxTree, 0);
+
+    // Check for main
+    analyzeMain(syntaxTree);
 }

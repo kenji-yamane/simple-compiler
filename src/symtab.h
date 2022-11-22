@@ -32,6 +32,7 @@ typedef LineListRec *LineList;
 struct BucketListRec {
     char *name;
     int scope;
+    int params;
     ExpType type;
     DeclKind kind;
     LineList lines;
@@ -44,7 +45,7 @@ typedef BucketListRec *BucketList;
 bool equalRecs(BucketListRec *l, char *name, int scope);
 
 BucketListRec *st_insert(char *name, int lineno, int scope, ExpType type,
-                         DeclKind kind);
+                         DeclKind kind, int params);
 
 BucketList st_lookup(char *name, int scope);
 
