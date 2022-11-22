@@ -18,6 +18,7 @@ FLX_SRC := lex.yy.c
 TEST_DIR         := ./test
 FIXTURES_DIR     := $(TEST_DIR)/fixtures
 LEXICAL_TEST_DIR := $(TEST_DIR)/lexical
+SYM_TAB_TEST_DIR := $(TEST_DIR)/symtab
 
 SRC := $(shell ls $(SRC_DIR)/*.c)
 FLX := $(shell ls $(SRC_DIR)/*.l)
@@ -37,6 +38,14 @@ LEXICAL_SRC  := $(filter-out $(SRC_DIR)/main.c,$(SRC))
 LEXICAL_SRC  += $(LEXICAL_TEST_DIR)/main.c
 LEXICAL_OBJ  := $(LEXICAL_SRC:%.c=$(OBJ_DIR)/%.o)
 $(APP_DIR)/$(LEXICAL_TEST): $(LEXICAL_OBJ)
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -o $@ $^
+
+SYM_TAB_TEST := symtab-test
+SYM_TAB_SRC  := $(filter-out $(SRC_DIR)/main.c,$(SRC))
+SYM_TAB_SRC  += $(SYM_TAB_TEST_DIR)/main.c
+SYM_TAB_OBJ  := $(SYM_TAB_SRC:%.c=$(OBJ_DIR)/%.o)
+$(APP_DIR)/$(SYM_TAB_TEST): $(SYM_TAB_OBJ)
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -o $@ $^
 
