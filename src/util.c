@@ -274,10 +274,9 @@ static int indentno = 0;
 #define INDENT indentno += 2
 #define UNINDENT indentno -= 2
 
-
 enum indentKinds { spaceIndent, vebarIndent, tIndent, lIndent };
 
-enum indentKinds indent[100] = { spaceIndent };
+enum indentKinds indent[100] = {spaceIndent};
 int size = 0;
 
 /* printNode prints the node text */
@@ -348,13 +347,21 @@ void printNode(TreeNode *node) {
 
 /* printSpaces indents by printing spaces */
 void printSpaces() {
-    for (int i=0; i < size; i++)
-    switch(indent[i]) {
-        case spaceIndent: fprintf(listing, "  "); break;
-        case vebarIndent: fprintf(listing, "│ "); break;
-        case tIndent: fprintf(listing, "├─"); break;
-        case lIndent: fprintf(listing, "└─"); break;
-    }
+    for (int i = 0; i < size; i++)
+        switch (indent[i]) {
+        case spaceIndent:
+            fprintf(listing, "  ");
+            break;
+        case vebarIndent:
+            fprintf(listing, "│ ");
+            break;
+        case tIndent:
+            fprintf(listing, "├─");
+            break;
+        case lIndent:
+            fprintf(listing, "└─");
+            break;
+        }
 }
 
 /* procedure printTree prints a syntax tree to the
@@ -364,27 +371,25 @@ void printTree(TreeNode *tree) {
     while (tree != NULL) {
         printSpaces();
         printNode(tree);
-        
-        if (size > 0 && indent[size-1] == tIndent)
-            indent[size-1] = vebarIndent;
 
-        if (size > 0 && indent[size-1] == lIndent)
-            indent[size-1] = spaceIndent;
+        if (size > 0 && indent[size - 1] == tIndent)
+            indent[size - 1] = vebarIndent;
 
+        if (size > 0 && indent[size - 1] == lIndent)
+            indent[size - 1] = spaceIndent;
 
         if (tree->sibling == NULL)
             indent[size++] = spaceIndent;
         else
-            indent[size++] = vebarIndent;    
+            indent[size++] = vebarIndent;
 
         size++;
         for (int i = 0; i < MAXCHILDREN; i++) {
-            if (tree->child[i+1] == NULL)
-                indent[size-1] = lIndent; 
+            if (tree->child[i + 1] == NULL)
+                indent[size - 1] = lIndent;
             else
-                indent[size-1] = tIndent; 
+                indent[size - 1] = tIndent;
 
-            
             printTree(tree->child[i]);
         }
         size--;
@@ -393,7 +398,6 @@ void printTree(TreeNode *tree) {
         size--;
     }
 }
-
 
 stack push(stack s, void *val) {
     struct node *n = malloc(sizeof(struct node));

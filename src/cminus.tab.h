@@ -36,10 +36,10 @@
    private implementation details that can be changed or removed.  */
 
 #ifndef YY_YY_CMINUS_TAB_H_INCLUDED
-# define YY_YY_CMINUS_TAB_H_INCLUDED
+#define YY_YY_CMINUS_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
-# define YYDEBUG 0
+    #define YYDEBUG 0
 #endif
 #if YYDEBUG
 extern int yydebug;
@@ -47,59 +47,55 @@ extern int yydebug;
 
 /* Token kinds.  */
 #ifndef YYTOKENTYPE
-# define YYTOKENTYPE
-  enum yytokentype
-  {
+    #define YYTOKENTYPE
+enum yytokentype {
     YYEMPTY = -2,
-    YYEOF = 0,                     /* "end of file"  */
-    YYerror = 256,                 /* error  */
-    YYUNDEF = 257,                 /* "invalid token"  */
-    ENDFILE = 258,                 /* ENDFILE  */
-    ERROR = 259,                   /* ERROR  */
-    IF = 260,                      /* IF  */
-    WHILE = 261,                   /* WHILE  */
-    INT = 262,                     /* INT  */
-    RETURN = 263,                  /* RETURN  */
-    VOID = 264,                    /* VOID  */
-    ID = 265,                      /* ID  */
-    NUM = 266,                     /* NUM  */
-    SEMI = 267,                    /* SEMI  */
-    COMMA = 268,                   /* COMMA  */
-    LPAREN = 269,                  /* LPAREN  */
-    RPAREN = 270,                  /* RPAREN  */
-    LBRACK = 271,                  /* LBRACK  */
-    RBRACK = 272,                  /* RBRACK  */
-    LBRACE = 273,                  /* LBRACE  */
-    RBRACE = 274,                  /* RBRACE  */
-    PLUS = 275,                    /* PLUS  */
-    MINUS = 276,                   /* MINUS  */
-    TIMES = 277,                   /* TIMES  */
-    OVER = 278,                    /* OVER  */
-    LT = 279,                      /* LT  */
-    LTEQ = 280,                    /* LTEQ  */
-    GTEQ = 281,                    /* GTEQ  */
-    EQ = 282,                      /* EQ  */
-    NEQ = 283,                     /* NEQ  */
-    GT = 284,                      /* GT  */
-    ASSIGN = 285,                  /* ASSIGN  */
-    LOWER_THAN_ELSE = 286,         /* LOWER_THAN_ELSE  */
-    ELSE = 287                     /* ELSE  */
-  };
-  typedef enum yytokentype yytoken_kind_t;
+    YYEOF = 0,             /* "end of file"  */
+    YYerror = 256,         /* error  */
+    YYUNDEF = 257,         /* "invalid token"  */
+    ENDFILE = 258,         /* ENDFILE  */
+    ERROR = 259,           /* ERROR  */
+    IF = 260,              /* IF  */
+    WHILE = 261,           /* WHILE  */
+    INT = 262,             /* INT  */
+    RETURN = 263,          /* RETURN  */
+    VOID = 264,            /* VOID  */
+    ID = 265,              /* ID  */
+    NUM = 266,             /* NUM  */
+    SEMI = 267,            /* SEMI  */
+    COMMA = 268,           /* COMMA  */
+    LPAREN = 269,          /* LPAREN  */
+    RPAREN = 270,          /* RPAREN  */
+    LBRACK = 271,          /* LBRACK  */
+    RBRACK = 272,          /* RBRACK  */
+    LBRACE = 273,          /* LBRACE  */
+    RBRACE = 274,          /* RBRACE  */
+    PLUS = 275,            /* PLUS  */
+    MINUS = 276,           /* MINUS  */
+    TIMES = 277,           /* TIMES  */
+    OVER = 278,            /* OVER  */
+    LT = 279,              /* LT  */
+    LTEQ = 280,            /* LTEQ  */
+    GTEQ = 281,            /* GTEQ  */
+    EQ = 282,              /* EQ  */
+    NEQ = 283,             /* NEQ  */
+    GT = 284,              /* GT  */
+    ASSIGN = 285,          /* ASSIGN  */
+    LOWER_THAN_ELSE = 286, /* LOWER_THAN_ELSE  */
+    ELSE = 287             /* ELSE  */
+};
+typedef enum yytokentype yytoken_kind_t;
 #endif
 
 /* Value type.  */
-#if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
+#if !defined YYSTYPE && !defined YYSTYPE_IS_DECLARED
 typedef int YYSTYPE;
-# define YYSTYPE_IS_TRIVIAL 1
-# define YYSTYPE_IS_DECLARED 1
+    #define YYSTYPE_IS_TRIVIAL 1
+    #define YYSTYPE_IS_DECLARED 1
 #endif
-
 
 extern YYSTYPE yylval;
 
-
-int yyparse (void);
-
+int yyparse(void);
 
 #endif /* !YY_YY_CMINUS_TAB_H_INCLUDED  */
