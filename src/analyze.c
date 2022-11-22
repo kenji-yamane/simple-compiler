@@ -66,7 +66,7 @@ static void checkNode(TreeNode *t, int scope) {
                 break;
             }
             t->type = lookup->type;
-            if (paramCount(t) != lookup->params) {
+            if (paramCount(t) != lookup->params && lookup->type == FunK) {
                 char message[100] = "";
                 sprintf(message,
                         "parameter counting mismatch (expected %d, found %d)",
@@ -95,14 +95,17 @@ static void checkNode(TreeNode *t, int scope) {
         break;
     case DeclK:
         name = l->attr.name;
+        lookup = st_lookup(name, scope);
         switch (t->kind.decl) {
         case FunK:
-            if (st_lookup(name, scope) != NULL)
+            if (lookup != NULL)
                 semanticError(t, name, "invalid redeclaration of function");
             break;
         case VecK:
         case VarK:
-            if (st_lookup(name, scope) != NULL)
+            if (lookup != NULL &&
+                lookup->scope ==
+                    scope) // This means we *can* "shadow" outer scope
                 semanticError(t, name, "invalid redeclaration of variable");
             if (t->type == Void)
                 semanticError(t, name, "invalid declaration for variable");
@@ -112,35 +115,39 @@ static void checkNode(TreeNode *t, int scope) {
     }
 }
 
-void analyzeNode(TreeNode *syntaxTree, int scope) {
-    TreeNode *child;
+bool shouldScope(TreeNode *t) {
+    if (t->nodekind == StmtK)
+        return (t->kind.stmt == RepeatK) || (t->kind.stmt == IfK);
+    if (t->nodekind == ExpK)
+        return (t->kind.exp == IdK);
+    return false;
+}
 
-    while (syntaxTree != NULL) {
-        if (syntaxTree->nodekind == DeclK) {
-            checkNode(syntaxTree, scope);
+void analyzeNode(TreeNode *t, int scope) {
+    while (t != NULL) {
+        if (t->nodekind == DeclK) {
+            checkNode(t, scope);
 
             // We should count the param number
-            int count = paramCount(syntaxTree->child[0]);
-            st_insert(syntaxTree->child[0]->attr.name, syntaxTree->lineno,
-                      scope, syntaxTree->type, syntaxTree->kind.decl, count);
+            int count = paramCount(t->child[0]);
+            st_insert(t->child[0]->attr.name, t->lineno, scope, t->type,
+                      t->kind.decl, count);
 
-            for (int i = 0; i < MAXCHILDREN; i++) {
-                child = syntaxTree->child[0]->child[i];
-                if (child == NULL)
-                    continue;
-                analyzeNode(child, scope);
-            }
+            analyzeNode(t->child[0], scope);
         } else {
-            for (int i = 0; i < MAXCHILDREN; i++) {
-                child = syntaxTree->child[i];
-                if (child == NULL)
-                    continue;
-                analyzeNode(child, scope);
-            }
-            checkNode(syntaxTree, scope);
+            if (shouldScope(t))
+                scope++;
+
+            for (int i = 0; i < MAXCHILDREN; i++)
+                analyzeNode(t->child[i], scope);
+
+            if (shouldScope(t))
+                st_remove(scope--);
+
+            checkNode(t, scope);
         }
 
-        syntaxTree = syntaxTree->sibling;
+        t = t->sibling;
     }
 }
 

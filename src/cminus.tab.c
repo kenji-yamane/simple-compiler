@@ -1997,8 +1997,6 @@ int yyerror(char *message) {
                 tokenTypeToString(yychar), lineno, message);
     }
 
-    /* printToken(yychar, tokenString); */
-
     Error = TRUE;
     return 0;
 }
