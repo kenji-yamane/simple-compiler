@@ -76,9 +76,9 @@ int main(int argc, char *argv[]) {
         if (TraceAnalyze)
             fprintf(listing, "\nAnalyzing...\n");
         analyze(syntaxTree);
-        if (TraceAnalyze){
+        if (TraceAnalyze) {
             fprintf(listing, "\nAnalysis Finished\n");
-            if(!Error)
+            if (!Error)
                 printSymTab(listing);
         }
     }

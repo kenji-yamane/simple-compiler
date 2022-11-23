@@ -167,14 +167,14 @@ void printSymTab(FILE *listing) {
                     fprintf(listing, "%4d ", t->lineno);
                     t = t->next;
                 }
-                switch(l->type){
-                    case Void:
-                        fprintf(listing, "%15s", "void");
-                        break;
-                    case Integer:
-                        fprintf(listing, "%15s", "int");
+                switch (l->type) {
+                case Void:
+                    fprintf(listing, "%15s", "void");
+                    break;
+                case Integer:
+                    fprintf(listing, "%15s", "int");
                 }
-                
+
                 fprintf(listing, "\n");
                 l = l->next;
             }
