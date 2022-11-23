@@ -45,12 +45,12 @@ void generateStatement(TreeNode *t) {
 }
 
 void generateExpression(TreeNode *t, int finalRegister) {
+    int left = getNewRegister(), right = getNewRegister();
     if (t == NULL) {
         return;
     }
     switch (t->kind.exp) {
         case OpK:
-            int left = getNewRegister(), right = getNewRegister();
             generateExpression(t->child[0], left);
             generateExpression(t->child[0], right);
             printRegister(finalRegister);
@@ -68,7 +68,7 @@ void generateExpression(TreeNode *t, int finalRegister) {
             fprintf(listing, "%d", t->attr.val);
             break;
         case IdK:
-            if ()
+            // if ()
             break;
     }
 }
@@ -86,7 +86,7 @@ void generateDeclaration(TreeNode *t) {
 }
 
 void generateVector(TreeNode *t){
-    int registerName = getNewRegister()
+    int registerName = getNewRegister();
     printRegister(registerName);
     fprintf(listing, " = %d*4\n",t->child[1]);
 

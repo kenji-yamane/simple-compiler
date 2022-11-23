@@ -1,0 +1,7 @@
+
+CMINUS COMPILATION: semantic/6.cm
+
+Analyzing...
+Semantic error for 'main' at line 14: last declaration is not main
+
+Analysis Finished

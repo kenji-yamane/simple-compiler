@@ -1,0 +1,12 @@
+
+CMINUS COMPILATION: semantic/gcd.cm
+
+Analyzing...
+
+Analysis Finished
+Variable Name   Scope   Line Numbers   Type
+-------------   -----   ------------   ----
+main              0      11            void
+input             0       0             int
+output            0       0            void
+gcd               0       3             int

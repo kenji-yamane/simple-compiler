@@ -1,0 +1,14 @@
+
+CMINUS COMPILATION: parser/sort.cm
+
+Analyzing...
+
+Analysis Finished
+Variable Name   Scope   Line Numbers
+-------------   -----   ------------
+main              0      37 
+sort              0      23 
+input             0       0 
+minloc            0       6 
+output            0       0 
+x                 0       4    8 

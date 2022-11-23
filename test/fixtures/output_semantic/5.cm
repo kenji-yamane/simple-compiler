@@ -1,0 +1,9 @@
+
+CMINUS COMPILATION: semantic/5.cm
+
+Analyzing...
+Semantic error for 'funcDois' at line 11: invalid redeclaration of function
+Semantic error for 'funcDois' at line 19: parameter counting mismatch (expected 1, found 0)
+Semantic error for 'funcTres' at line 20: name was not declared in current scope
+
+Analysis Finished

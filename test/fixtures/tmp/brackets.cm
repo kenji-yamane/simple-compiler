@@ -1,0 +1,12 @@
+
+CMINUS COMPILATION: parser/brackets.cm
+
+Analyzing...
+Semantic error for 'main' at line 1: last declaration is not main
+
+Analysis Finished
+Variable Name   Scope   Line Numbers
+-------------   -----   ------------
+input             0       0 
+output            0       0 
+x                 0       1 

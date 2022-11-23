@@ -152,8 +152,10 @@ void freeRec(BucketListRec *l) {
  */
 void printSymTab(FILE *listing) {
     int i;
-    fprintf(listing, "Variable Name   Scope   Line Numbers\n");
-    fprintf(listing, "-------------   -----   ------------\n");
+    char type[9];
+
+    fprintf(listing, "Variable Name   Scope   Line Numbers   Type\n");
+    fprintf(listing, "-------------   -----   ------------   ----\n");
     for (i = 0; i < SIZE; ++i) {
         if (hashTable[i] != NULL) {
             BucketList l = hashTable[i];
@@ -165,6 +167,14 @@ void printSymTab(FILE *listing) {
                     fprintf(listing, "%4d ", t->lineno);
                     t = t->next;
                 }
+                switch(l->type){
+                    case Void:
+                        fprintf(listing, "%15s", "void");
+                        break;
+                    case Integer:
+                        fprintf(listing, "%15s", "int");
+                }
+                
                 fprintf(listing, "\n");
                 l = l->next;
             }

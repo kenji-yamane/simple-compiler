@@ -1,0 +1,14 @@
+
+CMINUS COMPILATION: semantic/sort.cm
+
+Analyzing...
+
+Analysis Finished
+Variable Name   Scope   Line Numbers   Type
+-------------   -----   ------------   ----
+main              0      37            void
+sort              0      23            void
+input             0       0             int
+minloc            0       6             int
+output            0       0            void
+x                 0       4    8             int

@@ -1,0 +1,7 @@
+
+CMINUS COMPILATION: semantic/7.cm
+
+Analyzing...
+Semantic error for 'xyz' at line 14: variable shadows function from outer scope
+
+Analysis Finished

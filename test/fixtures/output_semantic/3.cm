@@ -1,0 +1,7 @@
+
+CMINUS COMPILATION: semantic/3.cm
+
+Analyzing...
+Semantic error for 'a' at line 6: invalid declaration for variable
+
+Analysis Finished

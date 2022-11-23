@@ -1,0 +1,7 @@
+
+CMINUS COMPILATION: semantic/1.cm
+
+Analyzing...
+Semantic error for 'b' at line 5: name was not declared in current scope
+
+Analysis Finished

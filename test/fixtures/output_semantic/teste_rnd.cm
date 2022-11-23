@@ -1,0 +1,12 @@
+
+CMINUS COMPILATION: semantic/teste_rnd.cm
+
+Analyzing...
+
+Analysis Finished
+Variable Name   Scope   Line Numbers   Type
+-------------   -----   ------------   ----
+main              0       8            void
+input             0       0             int
+output            0       0            void
+funcao            0       1             int

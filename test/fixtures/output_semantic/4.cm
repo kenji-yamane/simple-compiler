@@ -1,0 +1,7 @@
+
+CMINUS COMPILATION: semantic/4.cm
+
+Analyzing...
+Semantic error for 'a' at line 7: invalid redeclaration of variable
+
+Analysis Finished

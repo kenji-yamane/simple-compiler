@@ -1,0 +1,7 @@
+
+CMINUS COMPILATION: semantic/2.cm
+
+Analyzing...
+Semantic error for 'a' at line 11: assignment of non-integer value to variable
+
+Analysis Finished
