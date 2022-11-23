@@ -84,8 +84,8 @@ typedef struct treeNode {
         int val;
         char *name;
     } attr;
-    ExpType type; /* for type checking of exps */
-	DeclType declType; // alternative for symbol table in code generation
+    ExpType type;      /* for type checking of exps */
+    DeclType declType; // alternative for symbol table in code generation
 } TreeNode;
 
 /**************************************************/

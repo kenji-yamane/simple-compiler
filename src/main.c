@@ -81,9 +81,9 @@ int main(int argc, char *argv[]) {
     }
         #if !NO_CODE
     if (!Error) {
-		fprintf(listing, "\nGenerating code...\n");
-		generateCode(syntaxTree, 4);
-		fprintf(listing, "\nCode Generated\n");
+        fprintf(listing, "\nGenerating code...\n");
+        generateCode(syntaxTree, 4);
+        fprintf(listing, "\nCode Generated\n");
     }
         #endif
     #endif

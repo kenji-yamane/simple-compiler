@@ -24,4 +24,3 @@ void generateVariable(TreeNode *t, int spaces, int finalRegister);
 void generateDeclaration(TreeNode *t, int spaces);
 
 #endif
-
