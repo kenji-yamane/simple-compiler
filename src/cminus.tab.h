@@ -35,10 +35,10 @@
    are private implementation details.  Do not rely on them.  */
 
 #ifndef YY_YY_SRC_CMINUS_TAB_H_INCLUDED
-# define YY_YY_SRC_CMINUS_TAB_H_INCLUDED
+#define YY_YY_SRC_CMINUS_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
-# define YYDEBUG 0
+    #define YYDEBUG 0
 #endif
 #if YYDEBUG
 extern int yydebug;
@@ -46,9 +46,8 @@ extern int yydebug;
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
-# define YYTOKENTYPE
-  enum yytokentype
-  {
+    #define YYTOKENTYPE
+enum yytokentype {
     ERROR = 258,
     IF = 259,
     WHILE = 260,
@@ -78,19 +77,18 @@ extern int yydebug;
     ASSIGN = 284,
     LOWER_THAN_ELSE = 285,
     ELSE = 286
-  };
+};
 #endif
 
 /* Value type.  */
-#if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
+#if !defined YYSTYPE && !defined YYSTYPE_IS_DECLARED
 typedef int YYSTYPE;
-# define YYSTYPE_IS_TRIVIAL 1
-# define YYSTYPE_IS_DECLARED 1
+    #define YYSTYPE_IS_TRIVIAL 1
+    #define YYSTYPE_IS_DECLARED 1
 #endif
-
 
 extern YYSTYPE yylval;
 
-int yyparse (void);
+int yyparse(void);
 
 #endif /* !YY_YY_SRC_CMINUS_TAB_H_INCLUDED  */
