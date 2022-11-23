@@ -1,8 +1,0 @@
-
-CMINUS COMPILATION: cases/gcd_sem_parenteses.cm
-Syntax error at line 14: syntax error
-Current token: 	special symbol:
-		lexeme: ";"
-		type:   SEMI
-
-Syntax tree:

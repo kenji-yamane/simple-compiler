@@ -1,8 +1,0 @@
-
-CMINUS COMPILATION: cases/gcd_sem_ponto_virgula.cm
-Syntax error at line 13: syntax error
-Current token: 	reserved word:
-		lexeme: "int"
-		type:   INT
-
-Syntax tree:

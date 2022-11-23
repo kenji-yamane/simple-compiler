@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.8.2.  */
+/* A Bison parser, made by GNU Bison 3.5.1.  */
 
 /* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2021 Free Software Foundation,
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2020 Free Software Foundation,
    Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -31,70 +31,66 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-/* DO NOT RELY ON FEATURES THAT ARE NOT DOCUMENTED in the manual,
-   especially those whose name start with YY_ or yy_.  They are
-   private implementation details that can be changed or removed.  */
+/* Undocumented macros, especially those whose name start with YY_,
+   are private implementation details.  Do not rely on them.  */
 
-#ifndef YY_YY_SRC_CMINUS_TAB_H_INCLUDED
-#define YY_YY_SRC_CMINUS_TAB_H_INCLUDED
+#ifndef YY_YY_CMINUS_TAB_H_INCLUDED
+# define YY_YY_CMINUS_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
-    #define YYDEBUG 0
+# define YYDEBUG 0
 #endif
 #if YYDEBUG
 extern int yydebug;
 #endif
 
-/* Token kinds.  */
+/* Token type.  */
 #ifndef YYTOKENTYPE
-    #define YYTOKENTYPE
-enum yytokentype {
-    YYEMPTY = -2,
-    YYEOF = 0,             /* "end of file"  */
-    YYerror = 256,         /* error  */
-    YYUNDEF = 257,         /* "invalid token"  */
-    ERROR = 258,           /* ERROR  */
-    IF = 259,              /* IF  */
-    WHILE = 260,           /* WHILE  */
-    INT = 261,             /* INT  */
-    RETURN = 262,          /* RETURN  */
-    VOID = 263,            /* VOID  */
-    ID = 264,              /* ID  */
-    NUM = 265,             /* NUM  */
-    SEMI = 266,            /* SEMI  */
-    COMMA = 267,           /* COMMA  */
-    LPAREN = 268,          /* LPAREN  */
-    RPAREN = 269,          /* RPAREN  */
-    LBRACK = 270,          /* LBRACK  */
-    RBRACK = 271,          /* RBRACK  */
-    LBRACE = 272,          /* LBRACE  */
-    RBRACE = 273,          /* RBRACE  */
-    PLUS = 274,            /* PLUS  */
-    MINUS = 275,           /* MINUS  */
-    TIMES = 276,           /* TIMES  */
-    OVER = 277,            /* OVER  */
-    LT = 278,              /* LT  */
-    LTEQ = 279,            /* LTEQ  */
-    GTEQ = 280,            /* GTEQ  */
-    EQ = 281,              /* EQ  */
-    NEQ = 282,             /* NEQ  */
-    GT = 283,              /* GT  */
-    ASSIGN = 284,          /* ASSIGN  */
-    LOWER_THAN_ELSE = 285, /* LOWER_THAN_ELSE  */
-    ELSE = 286             /* ELSE  */
-};
-typedef enum yytokentype yytoken_kind_t;
+# define YYTOKENTYPE
+  enum yytokentype
+  {
+    ERROR = 258,
+    IF = 259,
+    WHILE = 260,
+    INT = 261,
+    RETURN = 262,
+    VOID = 263,
+    ID = 264,
+    NUM = 265,
+    SEMI = 266,
+    COMMA = 267,
+    LPAREN = 268,
+    RPAREN = 269,
+    LBRACK = 270,
+    RBRACK = 271,
+    LBRACE = 272,
+    RBRACE = 273,
+    PLUS = 274,
+    MINUS = 275,
+    TIMES = 276,
+    OVER = 277,
+    LT = 278,
+    LTEQ = 279,
+    GTEQ = 280,
+    EQ = 281,
+    NEQ = 282,
+    GT = 283,
+    ASSIGN = 284,
+    LOWER_THAN_ELSE = 285,
+    ELSE = 286
+  };
 #endif
 
 /* Value type.  */
-#if !defined YYSTYPE && !defined YYSTYPE_IS_DECLARED
+#if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef int YYSTYPE;
-    #define YYSTYPE_IS_TRIVIAL 1
-    #define YYSTYPE_IS_DECLARED 1
+# define YYSTYPE_IS_TRIVIAL 1
+# define YYSTYPE_IS_DECLARED 1
 #endif
+
 
 extern YYSTYPE yylval;
 
-int yyparse(void);
+int yyparse (void);
 
-#endif /* !YY_YY_SRC_CMINUS_TAB_H_INCLUDED  */
+#endif /* !YY_YY_CMINUS_TAB_H_INCLUDED  */

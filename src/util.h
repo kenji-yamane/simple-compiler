@@ -13,6 +13,16 @@ void printToken(TokenType, const char *);
  */
 void printOp(TokenType);
 
+/* Procedure printOpAndEnter prints a char
+ * representative of the operation plus endline
+ */
+void printOpAndEnter(TokenType);
+
+/* Procedure opChar returns a char
+ * representative of the operation
+ */
+char opChar(TokenType);
+
 /* Simply prints the corresponding string
  * to the enum variable
  */

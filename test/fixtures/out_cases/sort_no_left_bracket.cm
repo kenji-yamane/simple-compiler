@@ -1,8 +1,0 @@
-
-CMINUS COMPILATION: cases/sort_no_left_bracket.cm
-Syntax error at line 1: syntax error
-Current token: 	number:
-		lexeme: "10"
-		type:   NUM
-
-Syntax tree:

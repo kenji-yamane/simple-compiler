@@ -1,8 +1,0 @@
-
-CMINUS COMPILATION: cases/sort_declaring_reverved_word.cm
-Syntax error at line 2: syntax error
-Current token: 	reserved word:
-		lexeme: "int"
-		type:   INT
-
-Syntax tree:
