@@ -296,6 +296,8 @@ var
         {
             $$ = newExpNode(IdK);
             $$->attr.name = copyString(identifierString);
+			$$->declType = VarK;
+			$$->lineno = lineno;
         }
     | ID
         {
@@ -307,6 +309,7 @@ var
             $$ = newExpNode(IdK);
             $$->child[0] = $4;
             $$->attr.name = front(savedName);
+			$$->declType = VecK;
             $$->lineno = (int) front(savedLine);
 
             savedName = pop(savedName);
@@ -385,6 +388,7 @@ ativacao
             $$ = newExpNode(IdK);
             $$->child[0] = $4;
             $$->attr.name = front(savedName);
+			$$->declType = FunK;
             $$->lineno = (int) front(savedLine);
             
             savedName = pop(savedName);

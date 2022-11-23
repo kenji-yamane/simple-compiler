@@ -62,6 +62,7 @@ typedef enum { StmtK, ExpK, DeclK } NodeKind;
 typedef enum { IfK, RepeatK, AssignK, ReturnK } StmtKind;
 typedef enum { OpK, ConstK, IdK } ExpKind;
 typedef enum { VarK, VecK, FunK } DeclKind;
+typedef DeclKind DeclType;
 
 /* ExpType is used for type checking */
 typedef enum { Void, Integer } ExpType;
@@ -83,7 +84,8 @@ typedef struct treeNode {
         int val;
         char *name;
     } attr;
-    ExpType type; /* for type checking of exps */
+    ExpType type;      /* for type checking of exps */
+    DeclType declType; // alternative for symbol table in code generation
 } TreeNode;
 
 /**************************************************/

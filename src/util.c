@@ -319,8 +319,8 @@ void printNode(TreeNode *node) {
         fprintf(listing, "unknown node kind\n");
 }
 
-/* printSpaces indents by printing spaces */
-void printSpaces() {
+/* printBranch indents by printing lines */
+void printBranch() {
     for (int i = 0; i < size; i++)
         switch (indent[i]) {
         case spaceIndent:
@@ -343,7 +343,7 @@ void printSpaces() {
  */
 void printTree(TreeNode *tree) {
     while (tree != NULL) {
-        printSpaces();
+        printBranch();
         printNode(tree);
 
         if (size > 0 && indent[size - 1] == tIndent)

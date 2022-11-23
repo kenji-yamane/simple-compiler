@@ -1,0 +1,28 @@
+
+CMINUS COMPILATION: generator/1.cm
+
+Analyzing...
+
+Analysis Finished
+Variable Name   Scope   Line Numbers   Type
+-------------   -----   ------------   ----
+main              0       1            void
+input             0       0             int
+output            0       0            void
+
+Generating code...
+    goto main
+    main:
+        r4 = 1
+        r3 = x[r4]
+        r1 = r3
+        r6 = 3
+        r5 = x[r6]
+        r2 = r5
+        r0 = r1 + r2
+        r8 = 1
+        r9 = 2
+        r7 = r8 + r9
+        x[r7] = r0
+
+Code Generated
