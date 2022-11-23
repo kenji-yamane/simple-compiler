@@ -8,7 +8,7 @@
 /* set NO_CODE to TRUE to get a compiler that does not
  * generate code
  */
-#define NO_CODE TRUE
+#define NO_CODE FALSE
 
 #include "util.h"
 #if NO_PARSE
@@ -18,7 +18,7 @@
     #if !NO_ANALYZE
         #include "analyze.h"
         #if !NO_CODE
-            #include "cgen.h"
+            #include "generator.h"
         #endif
     #endif
 #endif
@@ -81,18 +81,9 @@ int main(int argc, char *argv[]) {
     }
         #if !NO_CODE
     if (!Error) {
-        char *codefile;
-        int fnlen = strcspn(pgm, ".");
-        codefile = (char *)calloc(fnlen + 4, sizeof(char));
-        strncpy(codefile, pgm, fnlen);
-        strcat(codefile, ".tm");
-        code = fopen(codefile, "w");
-        if (code == NULL) {
-            printf("Unable to open %s\n", codefile);
-            exit(1);
-        }
-        codeGen(syntaxTree, codefile);
-        fclose(code);
+		fprintf(listing, "\nGenerating code...\n");
+		generateCode(syntaxTree, 4);
+		fprintf(listing, "\nCode Generated\n");
     }
         #endif
     #endif
